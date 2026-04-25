@@ -1,30 +1,30 @@
 import { useState } from 'react';
 
 const services = [
-  { id: 1, name: 'Chăm Sóc Da Mặt Cơ Bản', duration: '60 phút', price: 350000, image: 'https://readdy.ai/api/search-image?query=facial%20skin%20care%20treatment%20spa%20Vietnam%20beautiful%20woman%20relaxing%20luxury%20spa%20treatment%20table%20professional%20beauty%20wellness%20soft%20pink&width=400&height=300&seq=spa001&orientation=landscape', popular: false, desc: 'Làm sạch sâu, dưỡng ẩm, phục hồi da mệt mỏi sau ngày dài.' },
-  { id: 2, name: 'Massage Đá Nóng Full Body', duration: '90 phút', price: 550000, image: 'https://readdy.ai/api/search-image?query=hot%20stone%20massage%20full%20body%20spa%20treatment%20Vietnam%20luxury%20relaxing%20wellness%20beauty%20soft%20lighting%20candles%20professional&width=400&height=300&seq=spa002&orientation=landscape', popular: true, desc: 'Đá núi lửa hàng triệu năm tuổi, tăng cường tuần hoàn, thư giãn cơ sâu.' },
-  { id: 3, name: 'Detox Da Mặt Chuyên Sâu', duration: '90 phút', price: 650000, image: 'https://readdy.ai/api/search-image?query=deep%20cleansing%20facial%20detox%20treatment%20luxury%20spa%20Vietnam%20professional%20skin%20care%20beauty%20woman%20relaxing&width=400&height=300&seq=spa003&orientation=landscape', popular: true, desc: 'Loại bỏ độc tố, se khít lỗ chân lông, da sáng rõ sau 1 lần.' },
-  { id: 4, name: 'Gói Cô Dâu Trọn Gói', duration: '3 giờ', price: 1500000, image: 'https://readdy.ai/api/search-image?query=bridal%20package%20spa%20treatment%20Vietnam%20luxury%20beauty%20care%20wedding%20preparation%20professional%20woman%20beautiful&width=400&height=300&seq=spa004&orientation=landscape', popular: false, desc: 'Trọn vẹn từ chăm sóc da, massage thư giãn đến tạo dáng tóc.' },
-  { id: 5, name: 'Massage Thư Giãn 60 phút', duration: '60 phút', price: 280000, image: 'https://readdy.ai/api/search-image?query=relaxing%20body%20massage%20spa%20treatment%20Vietnam%20luxury%20wellness%20professional%20soft%20warm%20lighting%20candles&width=400&height=300&seq=spa005&orientation=landscape', popular: false, desc: 'Thư giãn toàn diện với tinh dầu thiên nhiên, giảm căng thẳng.' },
-  { id: 6, name: 'Tắm Trắng Toàn Thân', duration: '75 phút', price: 450000, image: 'https://readdy.ai/api/search-image?query=body%20whitening%20treatment%20spa%20bath%20Vietnam%20luxury%20beauty%20skin%20care%20professional%20wellness%20center&width=400&height=300&seq=spa006&orientation=landscape', popular: false, desc: 'Công nghệ tắm trắng Hàn Quốc, da trắng sáng tự nhiên sau 3–5 buổi.' },
+  { id: 1, name: 'Chăm Sóc Da Mặt Cơ Bản', duration: '60 phút', price: 350000, image: 'https://readdy.ai/api/search-image?query=facial%20skin%20care%20treatment%20spa%20Vietnam%20beautiful%20woman%20relaxing%20luxury%20spa%20treatment%20table%20professional%20beauty%20wellness%20soft%20pink%20rose%20petals&width=500&height=360&seq=spa_svc_01&orientation=landscape', popular: false, desc: 'Làm sạch sâu, dưỡng ẩm, phục hồi da mệt mỏi sau ngày dài.' },
+  { id: 2, name: 'Massage Đá Nóng Full Body', duration: '90 phút', price: 550000, image: 'https://readdy.ai/api/search-image?query=hot%20stone%20massage%20full%20body%20spa%20treatment%20Vietnam%20luxury%20relaxing%20wellness%20beauty%20soft%20lighting%20candles%20warm%20stones%20back&width=500&height=360&seq=spa_svc_02&orientation=landscape', popular: true, desc: 'Đá núi lửa hàng triệu năm tuổi, tăng cường tuần hoàn, thư giãn cơ sâu.' },
+  { id: 3, name: 'Detox Da Mặt Chuyên Sâu', duration: '90 phút', price: 650000, image: 'https://readdy.ai/api/search-image?query=deep%20cleansing%20facial%20detox%20treatment%20luxury%20spa%20Vietnam%20professional%20skin%20care%20beauty%20woman%20relaxing%20mask%20serum&width=500&height=360&seq=spa_svc_03&orientation=landscape', popular: true, desc: 'Loại bỏ độc tố, se khít lỗ chân lông, da sáng rõ sau 1 lần.' },
+  { id: 4, name: 'Gói Cô Dâu Trọn Gói', duration: '3 giờ', price: 1500000, image: 'https://readdy.ai/api/search-image?query=bridal%20package%20spa%20treatment%20Vietnam%20luxury%20beauty%20care%20wedding%20preparation%20professional%20woman%20beautiful%20flowers%20bouquet&width=500&height=360&seq=spa_svc_04&orientation=landscape', popular: false, desc: 'Trọn vẹn từ chăm sóc da, massage thư giãn đến tạo dáng tóc.' },
+  { id: 5, name: 'Massage Thư Giãn 60 phút', duration: '60 phút', price: 280000, image: 'https://readdy.ai/api/search-image?query=relaxing%20body%20massage%20spa%20treatment%20Vietnam%20luxury%20wellness%20professional%20soft%20warm%20lighting%20candles%20aromatherapy%20oil&width=500&height=360&seq=spa_svc_05&orientation=landscape', popular: false, desc: 'Thư giãn toàn diện với tinh dầu thiên nhiên, giảm căng thẳng.' },
+  { id: 6, name: 'Tắm Trắng Toàn Thân', duration: '75 phút', price: 450000, image: 'https://readdy.ai/api/search-image?query=body%20whitening%20treatment%20spa%20bath%20Vietnam%20luxury%20beauty%20skin%20care%20professional%20wellness%20center%20milk%20bath%20rose%20petals&width=500&height=360&seq=spa_svc_06&orientation=landscape', popular: false, desc: 'Công nghệ tắm trắng Hàn Quốc, da trắng sáng tự nhiên sau 3–5 buổi.' },
 ];
 
 const gallery = [
-  'https://readdy.ai/api/search-image?query=luxury%20spa%20interior%20Vietnam%20rose%20petals%20bathtub%20candles%20flowers%20elegant%20soft%20pink%20lighting%20serene%20atmosphere&width=400&height=300&seq=spagal1&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=spa%20treatment%20room%20Vietnam%20luxury%20massage%20table%20candles%20orchid%20flower%20zen%20minimal%20soft%20lighting&width=400&height=300&seq=spagal2&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=spa%20lounge%20waiting%20area%20Vietnam%20luxury%20comfortable%20interior%20elegant%20pastel%20tones%20sofa%20cushions&width=400&height=300&seq=spagal3&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=spa%20product%20display%20Vietnam%20luxury%20organic%20natural%20skincare%20beauty%20oil%20serum%20bottles%20elegant%20shelf&width=400&height=300&seq=spagal4&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=spa%20facial%20treatment%20close%20up%20Vietnam%20beautiful%20woman%20relaxing%20skin%20care%20mask%20professional%20beauty&width=400&height=300&seq=spagal5&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=hot%20stone%20spa%20massage%20Vietnam%20warm%20stones%20back%20treatment%20professional%20therapist%20wellness%20beautiful&width=400&height=300&seq=spagal6&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=spa%20herbal%20steam%20room%20Vietnam%20luxury%20detox%20wellness%20center%20warm%20mist%20wooden%20sauna&width=400&height=300&seq=spagal7&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=spa%20reception%20desk%20Vietnam%20luxury%20elegant%20minimal%20flowers%20warm%20wood%20marble%20counter%20beautiful%20interior&width=400&height=300&seq=spagal8&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=luxury%20spa%20interior%20Vietnam%20rose%20petals%20bathtub%20candles%20flowers%20elegant%20soft%20pink%20lighting%20serene%20atmosphere%20romantic&width=400&height=300&seq=spa_gal_01&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=spa%20treatment%20room%20Vietnam%20luxury%20massage%20table%20candles%20orchid%20flower%20zen%20minimal%20soft%20lighting%20peaceful&width=400&height=300&seq=spa_gal_02&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=spa%20lounge%20waiting%20area%20Vietnam%20luxury%20comfortable%20interior%20elegant%20pastel%20tones%20sofa%20cushions%20plants&width=400&height=300&seq=spa_gal_03&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=spa%20product%20display%20Vietnam%20luxury%20organic%20natural%20skincare%20beauty%20oil%20serum%20bottles%20elegant%20shelf%20marble&width=400&height=300&seq=spa_gal_04&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=spa%20facial%20treatment%20close%20up%20Vietnam%20beautiful%20woman%20relaxing%20skin%20care%20mask%20professional%20beauty%20therapist&width=400&height=300&seq=spa_gal_05&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=hot%20stone%20spa%20massage%20Vietnam%20warm%20stones%20back%20treatment%20professional%20therapist%20wellness%20beautiful%20dim%20lighting&width=400&height=300&seq=spa_gal_06&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=spa%20herbal%20steam%20room%20Vietnam%20luxury%20detox%20wellness%20center%20warm%20mist%20wooden%20sauna%20interior&width=400&height=300&seq=spa_gal_07&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=spa%20reception%20desk%20Vietnam%20luxury%20elegant%20minimal%20flowers%20warm%20wood%20marble%20counter%20beautiful%20interior%20welcoming&width=400&height=300&seq=spa_gal_08&orientation=landscape',
 ];
 
 const spaceImages = [
-  { img: 'https://readdy.ai/api/search-image?query=luxury%20private%20treatment%20room%20spa%20Vietnam%20intimate%20cozy%20candles%20orchids%20dim%20elegant%20relaxation&width=600&height=400&seq=spaspace1&orientation=landscape', label: 'Phòng Trị Liệu VIP' },
-  { img: 'https://readdy.ai/api/search-image?query=spa%20couple%20treatment%20room%20Vietnam%20romantic%20double%20massage%20table%20rose%20petals%20candles%20bathtub&width=600&height=400&seq=spaspace2&orientation=landscape', label: 'Phòng Đôi Lãng Mạn' },
-  { img: 'https://readdy.ai/api/search-image?query=spa%20relaxation%20lounge%20pool%20Vietnam%20luxury%20elegant%20tiled%20water%20feature%20soft%20lighting%20indoor&width=600&height=400&seq=spaspace3&orientation=landscape', label: 'Bể Khoáng Nóng' },
-  { img: 'https://readdy.ai/api/search-image?query=spa%20private%20garden%20outdoor%20treatment%20area%20Vietnam%20tropical%20plants%20natural%20sunlight%20zen%20atmosphere&width=600&height=400&seq=spaspace4&orientation=landscape', label: 'Khu Vườn Zen' },
+  { img: 'https://readdy.ai/api/search-image?query=luxury%20private%20treatment%20room%20spa%20Vietnam%20intimate%20cozy%20candles%20orchids%20dim%20elegant%20relaxation%20single%20bed&width=600&height=400&seq=spa_space_01&orientation=landscape', label: 'Phòng Trị Liệu VIP' },
+  { img: 'https://readdy.ai/api/search-image?query=spa%20couple%20treatment%20room%20Vietnam%20romantic%20double%20massage%20table%20rose%20petals%20candles%20bathtub%20warm%20lighting&width=600&height=400&seq=spa_space_02&orientation=landscape', label: 'Phòng Đôi Lãng Mạn' },
+  { img: 'https://readdy.ai/api/search-image?query=spa%20relaxation%20pool%20Vietnam%20luxury%20elegant%20tiled%20water%20feature%20soft%20lighting%20indoor%20mineral%20bath&width=600&height=400&seq=spa_space_03&orientation=landscape', label: 'Bể Khoáng Nóng' },
+  { img: 'https://readdy.ai/api/search-image?query=spa%20private%20garden%20outdoor%20treatment%20area%20Vietnam%20tropical%20plants%20natural%20sunlight%20zen%20atmosphere%20bamboo&width=600&height=400&seq=spa_space_04&orientation=landscape', label: 'Khu Vườn Zen' },
 ];
 
 const awards = [
@@ -35,6 +35,7 @@ const awards = [
 ];
 
 export default function DemoSpa() {
+  const [mobileMenu, setMobileMenu] = useState(false);
   const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
   const [form, setForm] = useState({ name: '', phone: '', date: '', time: '' });
   const [bookDone, setBookDone] = useState(false);
@@ -63,10 +64,25 @@ export default function DemoSpa() {
               <button key={item} className="cursor-pointer hover:text-rose-600 transition-colors font-medium">{item}</button>
             ))}
           </nav>
-          <button onClick={() => setSelectedService(services[0])} className="flex items-center gap-1.5 bg-rose-500 text-white text-xs font-bold px-4 py-2 rounded-full cursor-pointer whitespace-nowrap hover:bg-rose-600 transition-colors">
-            <i className="ri-calendar-check-line text-xs"></i>Đặt Lịch
-          </button>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setSelectedService(services[0])} className="hidden md:flex items-center gap-1.5 bg-rose-500 text-white text-xs font-bold px-4 py-2 rounded-full cursor-pointer whitespace-nowrap hover:bg-rose-600 transition-colors">
+              <i className="ri-calendar-check-line text-xs"></i>Đặt Lịch
+            </button>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center text-rose-700/70">
+              <i className="ri-menu-line text-xl"></i>
+            </button>
+          </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-rose-100 px-4 py-3 space-y-2 bg-white">
+            {['Dịch Vụ', 'Bảng Giá', 'Gallery', 'Về Chúng Tôi', 'Đặt Lịch'].map((item) => (
+              <button key={item} className="block w-full text-left text-sm text-rose-700/70 py-1 cursor-pointer hover:text-rose-600">{item}</button>
+            ))}
+            <button onClick={() => setSelectedService(services[0])} className="w-full bg-rose-500 text-white text-xs font-bold px-4 py-2 rounded-full cursor-pointer mt-2">
+              <i className="ri-calendar-check-line text-xs"></i>Đặt Lịch
+            </button>
+          </div>
+        )}
       </header>
 
       {/* Hero */}

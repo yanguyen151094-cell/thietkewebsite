@@ -1,14 +1,29 @@
 import { useState, useEffect } from 'react';
 
 const products = [
-  { id: 1, name: 'Áo Thun Oversize Premium', price: 299000, oldPrice: 450000, image: 'https://readdy.ai/api/search-image?query=stylish%20oversize%20white%20t-shirt%20fashion%20product%20clean%20white%20background%20modern%20Vietnamese%20youth%20clothing%20minimal&width=400&height=500&seq=bh001&orientation=portrait', tag: 'HOT', rating: 4.8, sold: 1240, badge: '-33%' },
-  { id: 2, name: 'Quần Jeans Slim Fit', price: 549000, oldPrice: 750000, image: 'https://readdy.ai/api/search-image?query=slim%20fit%20denim%20jeans%20product%20clean%20white%20background%20modern%20fashion%20Vietnamese%20youth%20clothing%20minimal&width=400&height=500&seq=bh002&orientation=portrait', tag: 'SALE', rating: 4.7, sold: 890, badge: '-27%' },
-  { id: 3, name: 'Váy Hoa Mùa Hè', price: 399000, oldPrice: 0, image: 'https://readdy.ai/api/search-image?query=floral%20summer%20dress%20product%20clean%20white%20background%20modern%20fashion%20Vietnamese%20women%20clothing%20minimal&width=400&height=500&seq=bh003&orientation=portrait', tag: 'MỚI', rating: 4.9, sold: 567, badge: '' },
-  { id: 4, name: 'Áo Khoác Bomber', price: 699000, oldPrice: 950000, image: 'https://readdy.ai/api/search-image?query=bomber%20jacket%20fashion%20product%20clean%20white%20background%20modern%20Vietnamese%20youth%20clothing%20minimal&width=400&height=500&seq=bh004&orientation=portrait', tag: 'SALE', rating: 4.6, sold: 423, badge: '-26%' },
-  { id: 5, name: 'Set Đồ Thể Thao', price: 459000, oldPrice: 0, image: 'https://readdy.ai/api/search-image?query=sport%20outfit%20set%20fashion%20product%20clean%20white%20background%20modern%20Vietnamese%20athletic%20clothing%20minimal&width=400&height=500&seq=bh005&orientation=portrait', tag: 'MỚI', rating: 4.8, sold: 312, badge: '' },
-  { id: 6, name: 'Túi Tote Canvas', price: 199000, oldPrice: 280000, image: 'https://readdy.ai/api/search-image?query=canvas%20tote%20bag%20fashion%20accessory%20product%20clean%20white%20background%20modern%20minimal%20Vietnamese%20style&width=400&height=500&seq=bh006&orientation=portrait', tag: 'HOT', rating: 4.9, sold: 1560, badge: '-29%' },
-  { id: 7, name: 'Giày Sneaker Basic', price: 799000, oldPrice: 1100000, image: 'https://readdy.ai/api/search-image?query=white%20sneakers%20shoes%20product%20clean%20white%20background%20modern%20fashion%20minimal%20Vietnamese%20youth&width=400&height=500&seq=bh007&orientation=portrait', tag: 'SALE', rating: 4.7, sold: 734, badge: '-27%' },
-  { id: 8, name: 'Mũ Bucket Thêu', price: 159000, oldPrice: 0, image: 'https://readdy.ai/api/search-image?query=embroidered%20bucket%20hat%20accessory%20fashion%20product%20clean%20white%20background%20modern%20minimal%20Vietnamese%20youth&width=400&height=500&seq=bh008&orientation=portrait', tag: 'MỚI', rating: 4.5, sold: 891, badge: '' },
+  { id: 1, name: 'Áo Thun Oversize Premium', price: 299000, oldPrice: 450000, image: 'https://readdy.ai/api/search-image?query=stylish%20oversize%20white%20t-shirt%20fashion%20product%20clean%20white%20background%20modern%20Vietnamese%20youth%20clothing%20minimal&width=400&height=500&seq=bh001&orientation=portrait', tag: 'HOT', rating: 4.8, sold: 1240, badge: '-33%', cat: 'Áo' },
+  { id: 2, name: 'Quần Jeans Slim Fit', price: 549000, oldPrice: 750000, image: 'https://readdy.ai/api/search-image?query=slim%20fit%20denim%20jeans%20product%20clean%20white%20background%20modern%20fashion%20Vietnamese%20youth%20clothing%20minimal&width=400&height=500&seq=bh002&orientation=portrait', tag: 'SALE', rating: 4.7, sold: 890, badge: '-27%', cat: 'Quần' },
+  { id: 3, name: 'Váy Hoa Mùa Hè', price: 399000, oldPrice: 0, image: 'https://readdy.ai/api/search-image?query=floral%20summer%20dress%20product%20clean%20white%20background%20modern%20fashion%20Vietnamese%20women%20clothing%20minimal&width=400&height=500&seq=bh003&orientation=portrait', tag: 'MỚI', rating: 4.9, sold: 567, badge: '', cat: 'Váy' },
+  { id: 4, name: 'Áo Khoác Bomber', price: 699000, oldPrice: 950000, image: 'https://readdy.ai/api/search-image?query=bomber%20jacket%20fashion%20product%20clean%20white%20background%20modern%20Vietnamese%20youth%20clothing%20minimal&width=400&height=500&seq=bh004&orientation=portrait', tag: 'SALE', rating: 4.6, sold: 423, badge: '-26%', cat: 'Áo' },
+  { id: 5, name: 'Set Đồ Thể Thao', price: 459000, oldPrice: 0, image: 'https://readdy.ai/api/search-image?query=sport%20outfit%20set%20fashion%20product%20clean%20white%20background%20modern%20Vietnamese%20athletic%20clothing%20minimal&width=400&height=500&seq=bh005&orientation=portrait', tag: 'MỚI', rating: 4.8, sold: 312, badge: '', cat: 'Áo' },
+  { id: 6, name: 'Túi Tote Canvas', price: 199000, oldPrice: 280000, image: 'https://readdy.ai/api/search-image?query=canvas%20tote%20bag%20fashion%20accessory%20product%20clean%20white%20background%20modern%20minimal%20Vietnamese%20style&width=400&height=500&seq=bh006&orientation=portrait', tag: 'HOT', rating: 4.9, sold: 1560, badge: '-29%', cat: 'Phụ Kiện' },
+  { id: 7, name: 'Giày Sneaker Basic', price: 799000, oldPrice: 1100000, image: 'https://readdy.ai/api/search-image?query=white%20sneakers%20shoes%20product%20clean%20white%20background%20modern%20fashion%20minimal%20Vietnamese%20youth&width=400&height=500&seq=bh007&orientation=portrait', tag: 'SALE', rating: 4.7, sold: 734, badge: '-27%', cat: 'Giày & Túi' },
+  { id: 8, name: 'Mũ Bucket Thêu', price: 159000, oldPrice: 0, image: 'https://readdy.ai/api/search-image?query=embroidered%20bucket%20hat%20accessory%20fashion%20product%20clean%20white%20background%20modern%20minimal%20Vietnamese%20youth&width=400&height=500&seq=bh008&orientation=portrait', tag: 'MỚI', rating: 4.5, sold: 891, badge: '', cat: 'Phụ Kiện' },
+  { id: 9, name: 'Áo Sơ Mi Linen', price: 359000, oldPrice: 499000, image: 'https://readdy.ai/api/search-image?query=linen%20shirt%20fashion%20product%20clean%20white%20background%20modern%20Vietnamese%20men%20clothing%20minimal%20summer&width=400&height=500&seq=bh009&orientation=portrait', tag: 'SALE', rating: 4.6, sold: 645, badge: '-28%', cat: 'Áo' },
+  { id: 10, name: 'Quần Short Kaki', price: 249000, oldPrice: 0, image: 'https://readdy.ai/api/search-image?query=kaki%20shorts%20fashion%20product%20clean%20white%20background%20modern%20Vietnamese%20men%20summer%20clothing%20minimal&width=400&height=500&seq=bh010&orientation=portrait', tag: 'MỚI', rating: 4.7, sold: 432, badge: '', cat: 'Quần' },
+  { id: 11, name: 'Váy Maxi Boho', price: 499000, oldPrice: 699000, image: 'https://readdy.ai/api/search-image?query=boho%20maxi%20dress%20fashion%20product%20clean%20white%20background%20modern%20Vietnamese%20women%20summer%20clothing%20minimal&width=400&height=500&seq=bh011&orientation=portrait', tag: 'SALE', rating: 4.8, sold: 378, badge: '-29%', cat: 'Váy' },
+  { id: 12, name: 'Balo Da Nữ', price: 599000, oldPrice: 0, image: 'https://readdy.ai/api/search-image?query=leather%20women%20backpack%20fashion%20product%20clean%20white%20background%20modern%20minimal%20Vietnamese%20style%20elegant&width=400&height=500&seq=bh012&orientation=portrait', tag: 'HOT', rating: 4.9, sold: 523, badge: '', cat: 'Giày & Túi' },
+];
+
+const banners = [
+  { img: 'https://readdy.ai/api/search-image?query=fashion%20summer%20collection%20banner%20young%20Vietnamese%20models%20colorful%20clothes%20outdoor%20sunny%20day%20modern%20trendy%20editorial%20photography&width=1400&height=500&seq=bhban1&orientation=landscape', title: 'BỘ SƯU TẬP HÈ 2025', sub: 'Giảm đến 40% toàn bộ sản phẩm mùa hè' },
+  { img: 'https://readdy.ai/api/search-image?query=fashion%20accessories%20collection%20banner%20elegant%20jewelry%20bags%20shoes%20display%20modern%20minimal%20studio%20photography&width=1400&height=500&seq=bhban2&orientation=landscape', title: 'PHỤ KIỆN THỜI TRANG', sub: 'Mũ, túi, giày — phong cách của bạn' },
+];
+
+const testimonials = [
+  { name: 'Nguyễn Thị Hương', text: 'Áo thun oversize chất vải cực đẹp, giá lại rẻ hơn Zara nhiều. Đã mua 3 lần rồi!', rating: 5, date: '20/04/2025' },
+  { name: 'Trần Văn Minh', text: 'Giao hàng nhanh, đóng gói cẩn thận. Quần jeans slim fit vừa vặn hoàn hảo.', rating: 5, date: '18/04/2025' },
+  { name: 'Lê Thị Lan', text: 'Váy hoa mùa hè xinh quá, mặc đi biển được luôn. Chất vải mát, không nhăn.', rating: 4, date: '15/04/2025' },
 ];
 
 const categories = [
@@ -28,6 +43,9 @@ export default function DemoBanHang() {
   const [addedId, setAddedId] = useState<number | null>(null);
   const [wishlist, setWishlist] = useState<number[]>([]);
   const [timeLeft, setTimeLeft] = useState({ h: 4, m: 22, s: 0 });
+  const [showCart, setShowCart] = useState(false);
+  const [bannerIdx, setBannerIdx] = useState(0);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   useEffect(() => {
     const t = setInterval(() => {
@@ -41,16 +59,23 @@ export default function DemoBanHang() {
     return () => clearInterval(t);
   }, []);
 
+  useEffect(() => {
+    const t = setInterval(() => setBannerIdx(p => (p + 1) % banners.length), 5000);
+    return () => clearInterval(t);
+  }, []);
+
   const handleAdd = (id: number) => {
-    setCart((c) => c + 1);
+    setCart(c => c + 1);
     setAddedId(id);
     setTimeout(() => setAddedId(null), 1200);
   };
 
   const toggleWish = (id: number) =>
-    setWishlist((w) => w.includes(id) ? w.filter((x) => x !== id) : [...w, id]);
+    setWishlist(w => w.includes(id) ? w.filter(x => x !== id) : [...w, id]);
 
   const pad = (n: number) => String(n).padStart(2, '0');
+
+  const filtered = activeCategory === 'Tất Cả' ? products : products.filter(p => p.cat === activeCategory);
 
   return (
     <div className="min-h-screen bg-white font-sans" style={{ fontFamily: "'Inter', sans-serif" }}>
@@ -89,7 +114,7 @@ export default function DemoBanHang() {
               </div>
               {wishlist.length > 0 && <span className="absolute -top-1 -right-1 w-4 h-4 bg-rose-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center">{wishlist.length}</span>}
             </button>
-            <button className="relative cursor-pointer">
+            <button onClick={() => setShowCart(true)} className="relative cursor-pointer">
               <div className="w-9 h-9 flex items-center justify-center">
                 <i className="ri-shopping-cart-2-line text-slate-700 text-xl"></i>
               </div>
@@ -98,45 +123,44 @@ export default function DemoBanHang() {
             <button className="hidden md:flex items-center gap-1 bg-slate-900 text-white text-xs font-semibold px-3 py-2 rounded-full cursor-pointer whitespace-nowrap">
               <i className="ri-user-line text-xs"></i>Đăng Nhập
             </button>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center">
+              <i className="ri-menu-line text-slate-700 text-xl"></i>
+            </button>
           </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-slate-100 px-4 py-3 space-y-2 bg-white">
+            {['Trang Chủ', 'Sản Phẩm', 'Sale', 'Xu Hướng', 'Lookbook'].map((n) => (
+              <button key={n} className="block w-full text-left text-sm text-slate-600 py-1 cursor-pointer">{n}</button>
+            ))}
+          </div>
+        )}
       </header>
 
-      {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-pink-50 to-orange-50">
-        <div className="max-w-6xl mx-auto px-4 md:px-6 py-10 md:py-16 flex flex-col md:flex-row items-center gap-8">
-          <div className="flex-1 text-center md:text-left">
-            <span className="inline-flex items-center gap-1.5 bg-rose-100 text-rose-600 text-xs font-bold px-3 py-1 rounded-full mb-4">
-              <span className="w-1.5 h-1.5 bg-rose-500 rounded-full animate-pulse"></span>
-              BỘ SƯU TẬP HÈ 2025
-            </span>
-            <h1 className="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-4">
-              Định Nghĩa<br />
-              <span className="text-rose-600">Phong Cách</span><br />
-              Của Bạn
-            </h1>
-            <p className="text-slate-500 text-base mb-6 max-w-md">500+ sản phẩm thời trang trẻ trung — giao hàng nhanh, đổi trả miễn phí 30 ngày.</p>
-            <div className="flex gap-3 flex-col sm:flex-row justify-center md:justify-start">
-              <button className="bg-rose-600 text-white px-7 py-3 rounded-full font-bold cursor-pointer hover:bg-rose-700 transition-colors whitespace-nowrap text-sm">
-                Khám Phá Ngay <i className="ri-arrow-right-line ml-1"></i>
-              </button>
-              <button className="border-2 border-slate-200 text-slate-700 px-7 py-3 rounded-full font-bold cursor-pointer hover:border-rose-400 hover:text-rose-600 transition-colors whitespace-nowrap text-sm">
-                Xem Lookbook
-              </button>
-            </div>
-            <div className="flex gap-6 mt-8 justify-center md:justify-start">
-              {[['500+', 'Sản Phẩm'], ['50K+', 'Khách Hàng'], ['4.9★', 'Đánh Giá']].map(([num, label]) => (
-                <div key={label} className="text-center">
-                  <div className="text-xl font-black text-rose-600">{num}</div>
-                  <div className="text-xs text-slate-500">{label}</div>
+      {/* Banner Carousel */}
+      <div className="relative overflow-hidden h-[280px] md:h-[420px]">
+        {banners.map((b, i) => (
+          <div key={i} className={`absolute inset-0 transition-opacity duration-700 ${i === bannerIdx ? 'opacity-100' : 'opacity-0'}`}>
+            <img src={b.img} alt={b.title} className="w-full h-full object-cover object-center" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
+            <div className="absolute inset-0 flex items-center">
+              <div className="max-w-6xl mx-auto px-4 md:px-6 w-full">
+                <div className="max-w-md">
+                  <span className="inline-block bg-rose-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">SALE HÈ 2025</span>
+                  <h2 className="text-2xl md:text-4xl font-black text-white mb-2">{b.title}</h2>
+                  <p className="text-white/80 text-sm md:text-base mb-4">{b.sub}</p>
+                  <button className="bg-white text-rose-600 px-6 py-2.5 rounded-full font-bold text-sm cursor-pointer hover:bg-rose-50 transition-colors whitespace-nowrap">
+                    Mua Ngay <i className="ri-arrow-right-line ml-1"></i>
+                  </button>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-          <div className="flex-1 flex justify-center gap-4">
-            <img src="https://readdy.ai/api/search-image?query=stylish%20young%20Vietnamese%20woman%20fashion%20outfit%20summer%202025%20modern%20trendy%20clothing%20rose%20pink%20background%20portrait%20editorial%20fashion%20photography&width=300&height=420&seq=bhhero1&orientation=portrait" alt="Fashion Hero" className="w-36 md:w-52 h-48 md:h-72 object-cover object-top rounded-2xl" />
-            <img src="https://readdy.ai/api/search-image?query=young%20Vietnamese%20man%20fashion%20outfit%20summer%202025%20modern%20streetwear%20clothing%20warm%20orange%20background%20portrait%20editorial%20photography&width=300&height=420&seq=bhhero2&orientation=portrait" alt="Fashion Hero 2" className="w-36 md:w-52 h-48 md:h-72 object-cover object-top rounded-2xl mt-8" />
-          </div>
+        ))}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+          {banners.map((_, i) => (
+            <button key={i} onClick={() => setBannerIdx(i)} className={`w-2 h-2 rounded-full transition-all cursor-pointer ${i === bannerIdx ? 'bg-white w-6' : 'bg-white/50'}`} />
+          ))}
         </div>
       </div>
 
@@ -149,10 +173,10 @@ export default function DemoBanHang() {
           </div>
           <div className="flex items-center gap-2">
             {[pad(timeLeft.h), pad(timeLeft.m), pad(timeLeft.s)].map((val, idx) => (
-              <>
-                <div key={idx} className="bg-rose-600 text-white font-black text-xl w-12 h-12 flex items-center justify-center rounded-xl">{val}</div>
+              <div key={idx} className="flex items-center gap-2">
+                <div className="bg-rose-600 text-white font-black text-xl w-12 h-12 flex items-center justify-center rounded-xl">{val}</div>
                 {idx < 2 && <span className="text-white font-black text-xl">:</span>}
-              </>
+              </div>
             ))}
           </div>
           <button className="bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold px-5 py-2 rounded-full cursor-pointer whitespace-nowrap transition-colors">
@@ -202,7 +226,7 @@ export default function DemoBanHang() {
       {/* Products Grid */}
       <main className="max-w-6xl mx-auto px-4 md:px-6 pb-10">
         <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-bold text-slate-900">Sản Phẩm Nổi Bật <span className="text-slate-400 text-sm font-normal">({products.length} sản phẩm)</span></h2>
+          <h2 className="text-lg font-bold text-slate-900">Sản Phẩm Nổi Bật <span className="text-slate-400 text-sm font-normal">({filtered.length} sản phẩm)</span></h2>
           <select className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm text-slate-600 cursor-pointer outline-none bg-white">
             <option>Phổ Biến Nhất</option>
             <option>Mới Nhất</option>
@@ -211,7 +235,7 @@ export default function DemoBanHang() {
           </select>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-5">
-          {products.map((product) => (
+          {filtered.map((product) => (
             <div key={product.id} className="group bg-white border border-slate-100 rounded-2xl overflow-hidden hover:border-rose-200 transition-all cursor-pointer">
               <div className="relative overflow-hidden bg-slate-50">
                 <img src={product.image} alt={product.name} className="w-full h-44 md:h-56 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
@@ -256,6 +280,25 @@ export default function DemoBanHang() {
         </div>
       </main>
 
+      {/* Testimonials */}
+      <div className="bg-rose-50 py-10">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <h2 className="text-center text-lg font-bold text-slate-900 mb-6">Khách Hàng Nói Gì?</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {testimonials.map((t) => (
+              <div key={t.name} className="bg-white rounded-2xl p-5 border border-rose-100">
+                <div className="text-[#F59E0B] text-sm mb-2">{'★'.repeat(t.rating)}</div>
+                <p className="text-slate-600 text-sm leading-relaxed mb-3">"{t.text}"</p>
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-slate-800 text-sm">{t.name}</span>
+                  <span className="text-slate-400 text-xs">{t.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Brand Showcase */}
       <div className="bg-slate-50 border-t border-slate-100 py-8">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
@@ -285,6 +328,22 @@ export default function DemoBanHang() {
           </div>
         </div>
       </div>
+
+      {/* Cart Popup */}
+      {showCart && (
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-end md:items-center justify-center p-0 md:p-4" onClick={() => setShowCart(false)}>
+          <div className="bg-white rounded-t-2xl md:rounded-2xl p-6 w-full max-w-md" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-bold text-slate-900 text-lg">Giỏ Hàng ({cart})</h3>
+              <button onClick={() => setShowCart(false)} className="text-slate-400 cursor-pointer"><i className="ri-close-line text-xl"></i></button>
+            </div>
+            <p className="text-slate-500 text-sm text-center py-8">Giỏ hàng của bạn đang có {cart} sản phẩm</p>
+            <button className="w-full bg-rose-600 text-white font-bold py-3 rounded-xl cursor-pointer hover:bg-rose-700 transition-colors whitespace-nowrap">
+              Thanh Toán Ngay
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="bg-slate-900 text-white">

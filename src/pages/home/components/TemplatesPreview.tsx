@@ -45,11 +45,11 @@ export default function TemplatesPreview() {
               className={`group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:-translate-y-1 transition-all duration-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="relative h-52 overflow-hidden">
+              <div className="relative h-48 md:h-52 overflow-hidden">
                 <img
                   src={tpl.image}
                   alt={tpl.name}
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 {tpl.badge && (

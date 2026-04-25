@@ -1,33 +1,34 @@
 import { useState } from 'react';
 
 const menuItems = [
-  { id: 1, cat: 'Khai Vị', name: 'Gỏi Cuốn Tôm Thịt (4 cuốn)', price: 65000, image: 'https://readdy.ai/api/search-image?query=Vietnamese%20fresh%20spring%20rolls%20goi%20cuon%20shrimp%20pork%20beautiful%20food%20photography%20restaurant%20dark%20background%20elegant%20plating&width=400&height=300&seq=nh001&orientation=landscape', hot: true, desc: 'Tôm tươi, thịt heo luộc, rau thơm, bún, cuốn bánh tráng mỏng' },
-  { id: 2, cat: 'Khai Vị', name: 'Chả Giò Hải Sản (6 cái)', price: 85000, image: 'https://readdy.ai/api/search-image?query=Vietnamese%20crispy%20fried%20spring%20rolls%20seafood%20cha%20gio%20golden%20beautiful%20food%20photography%20dark%20background%20elegant%20plating&width=400&height=300&seq=nh002&orientation=landscape', hot: false, desc: 'Tôm, mực, cua, chiên giòn rụm với nước chấm đặc biệt' },
-  { id: 3, cat: 'Món Chính', name: 'Bò Lúc Lắc Sốt Tiêu Đen', price: 195000, image: 'https://readdy.ai/api/search-image?query=Vietnamese%20bo%20luc%20lac%20shaking%20beef%20black%20pepper%20sauce%20beautiful%20food%20photography%20dark%20background%20elegant%20restaurant%20plating&width=400&height=300&seq=nh003&orientation=landscape', hot: true, desc: 'Thịt bò Úc hảo hạng, sốt tiêu đen thượng hạng, ăn kèm cơm chiên bơ' },
-  { id: 4, cat: 'Món Chính', name: 'Cá Hồi Áp Chảo Sốt Chanh Dây', price: 245000, image: 'https://readdy.ai/api/search-image?query=pan%20fried%20salmon%20passion%20fruit%20sauce%20Vietnamese%20restaurant%20elegant%20food%20photography%20dark%20background%20fine%20dining%20plating&width=400&height=300&seq=nh004&orientation=landscape', hot: false, desc: 'Cá hồi Na Uy tươi, sốt chanh dây nhiệt đới, ăn kèm rau củ nướng' },
-  { id: 5, cat: 'Món Chính', name: 'Tôm Hùm Hấp Bia 500g', price: 850000, image: 'https://readdy.ai/api/search-image?query=steamed%20lobster%20beer%20Vietnamese%20restaurant%20luxury%20seafood%20food%20photography%20dark%20background%20elegant%20fine%20dining&width=400&height=300&seq=nh005&orientation=landscape', hot: true, desc: 'Tôm hùm tươi sống, hấp bia Đức, bơ tỏi, chanh vàng' },
-  { id: 6, cat: 'Tráng Miệng', name: 'Chè Ba Màu Đặc Biệt', price: 45000, image: 'https://readdy.ai/api/search-image?query=Vietnamese%20three%20color%20dessert%20che%20ba%20mau%20colorful%20beautiful%20food%20photography%20elegant%20dark%20background%20sweet&width=400&height=300&seq=nh006&orientation=landscape', hot: false, desc: 'Đậu đỏ, đậu xanh, thạch pandan, nước cốt dừa thơm ngậy' },
+  { id: 1, cat: 'Khai Vị', name: 'Gỏi Cuốn Tôm Thịt (4 cuốn)', price: 65000, image: 'https://readdy.ai/api/search-image?query=Vietnamese%20fresh%20spring%20rolls%20goi%20cuon%20shrimp%20pork%20beautiful%20food%20photography%20restaurant%20dark%20background%20elegant%20plating%20garnish%20herbs&width=500&height=360&seq=nhr_menu_01&orientation=landscape', hot: true, desc: 'Tôm tươi, thịt heo luộc, rau thơm, bún, cuốn bánh tráng mỏng' },
+  { id: 2, cat: 'Khai Vị', name: 'Chả Giò Hải Sản (6 cái)', price: 85000, image: 'https://readdy.ai/api/search-image?query=Vietnamese%20crispy%20fried%20spring%20rolls%20seafood%20golden%20crunchy%20beautiful%20food%20photography%20dark%20background%20elegant%20plating%20dipping%20sauce&width=500&height=360&seq=nhr_menu_02&orientation=landscape', hot: false, desc: 'Tôm, mực, cua, chiên giòn rụm với nước chấm đặc biệt' },
+  { id: 3, cat: 'Món Chính', name: 'Bò Lúc Lắc Sốt Tiêu Đen', price: 195000, image: 'https://readdy.ai/api/search-image?query=Vietnamese%20shaking%20beef%20black%20pepper%20sauce%20sizzling%20cast%20iron%20pan%20beautiful%20food%20photography%20dark%20background%20elegant%20restaurant%20fine%20dining&width=500&height=360&seq=nhr_menu_03&orientation=landscape', hot: true, desc: 'Thịt bò Úc hảo hạng, sốt tiêu đen thượng hạng, ăn kèm cơm chiên bơ' },
+  { id: 4, cat: 'Món Chính', name: 'Cá Hồi Áp Chảo Sốt Chanh Dây', price: 245000, image: 'https://readdy.ai/api/search-image?query=pan%20seared%20salmon%20fillet%20passion%20fruit%20sauce%20Vietnamese%20restaurant%20elegant%20food%20photography%20dark%20background%20fine%20dining%20plating%20vegetables&width=500&height=360&seq=nhr_menu_04&orientation=landscape', hot: false, desc: 'Cá hồi Na Uy tươi, sốt chanh dây nhiệt đới, ăn kèm rau củ nướng' },
+  { id: 5, cat: 'Món Chính', name: 'Tôm Hùm Hấp Bia 500g', price: 850000, image: 'https://readdy.ai/api/search-image?query=steamed%20whole%20lobster%20beer%20Vietnamese%20restaurant%20luxury%20seafood%20food%20photography%20dark%20background%20elegant%20fine%20dining%20butter%20garlic%20lemon&width=500&height=360&seq=nhr_menu_05&orientation=landscape', hot: true, desc: 'Tôm hùm tươi sống, hấp bia Đức, bơ tỏi, chanh vàng' },
+  { id: 6, cat: 'Tráng Miệng', name: 'Chè Ba Màu Đặc Biệt', price: 45000, image: 'https://readdy.ai/api/search-image?query=Vietnamese%20three%20color%20dessert%20layered%20glass%20beautiful%20food%20photography%20elegant%20dark%20background%20sweet%20coconut%20milk%20colorful&width=500&height=360&seq=nhr_menu_06&orientation=landscape', hot: false, desc: 'Đậu đỏ, đậu xanh, thạch pandan, nước cốt dừa thơm ngậy' },
 ];
 
 const categories = ['Tất Cả', 'Khai Vị', 'Món Chính', 'Tráng Miệng', 'Đồ Uống'];
 
 const gallery = [
-  'https://readdy.ai/api/search-image?query=upscale%20Vietnamese%20restaurant%20interior%20dark%20elegant%20warm%20lighting%20luxurious%20atmosphere%20wooden%20decor%20lanterns%20ambient%20mood%20fine%20dining%20night&width=600&height=400&seq=nhgal1&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=Vietnamese%20fine%20dining%20restaurant%20table%20setting%20elegant%20flowers%20candles%20dark%20atmosphere%20romantic%20dinner%20couples&width=600&height=400&seq=nhgal2&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=Vietnamese%20restaurant%20professional%20chef%20cooking%20open%20kitchen%20fine%20dining%20modern%20stainless%20steel&width=600&height=400&seq=nhgal3&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=Vietnamese%20restaurant%20outdoor%20terrace%20garden%20seating%20evening%20lights%20romantic%20warm%20atmosphere%20dining&width=600&height=400&seq=nhgal4&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=Vietnamese%20restaurant%20bar%20counter%20cocktails%20drinks%20elegant%20dark%20wood%20shelves%20ambient%20bottle%20display&width=600&height=400&seq=nhgal5&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=Vietnamese%20restaurant%20private%20VIP%20dining%20room%20elegant%20table%20setting%20dark%20luxury%20red%20candles%20exclusive&width=600&height=400&seq=nhgal6&orientation=landscape',
-  'https://readdy.ai/api/search-image?query=Vietnamese%20fine%20dining%20dessert%20plating%20artistic%20presentation%20dark%20background%20gold%20leaf%20chocolate&width=600&height=400&seq=nhgal7&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=upscale%20Vietnamese%20restaurant%20interior%20dark%20elegant%20warm%20lighting%20luxurious%20atmosphere%20wooden%20decor%20lanterns%20ambient%20mood%20fine%20dining%20night&width=600&height=400&seq=nhr_gal_01&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=Vietnamese%20fine%20dining%20restaurant%20table%20setting%20elegant%20flowers%20candles%20dark%20atmosphere%20romantic%20dinner%20couples%20evening&width=600&height=400&seq=nhr_gal_02&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=Vietnamese%20restaurant%20professional%20chef%20cooking%20open%20kitchen%20fine%20dining%20modern%20stainless%20steel%20brigade&width=600&height=400&seq=nhr_gal_03&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=Vietnamese%20restaurant%20outdoor%20terrace%20garden%20seating%20evening%20lights%20romantic%20warm%20atmosphere%20dining%20al%20fresco&width=600&height=400&seq=nhr_gal_04&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=Vietnamese%20restaurant%20bar%20counter%20cocktails%20drinks%20elegant%20dark%20wood%20shelves%20ambient%20bottle%20display%20bartender&width=600&height=400&seq=nhr_gal_05&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=Vietnamese%20restaurant%20private%20VIP%20dining%20room%20elegant%20table%20setting%20dark%20luxury%20red%20candles%20exclusive%20curtains&width=600&height=400&seq=nhr_gal_06&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=Vietnamese%20fine%20dining%20dessert%20plating%20artistic%20presentation%20dark%20background%20gold%20leaf%20chocolate%20mousse&width=600&height=400&seq=nhr_gal_07&orientation=landscape',
 ];
 
 const chefImages = [
-  { img: 'https://readdy.ai/api/search-image?query=professional%20Vietnamese%20chef%20portrait%20kitchen%20restaurant%20uniform%20confident%20proud%20award%20winning%20culinary&width=400&height=400&seq=nhchef1&orientation=squarish', name: 'Chef Nguyễn Thanh Bình', role: 'Bếp Trưởng' },
-  { img: 'https://readdy.ai/api/search-image?query=female%20Vietnamese%20chef%20portrait%20restaurant%20kitchen%20elegant%20professional%20uniform%20skilled%20culinary%20expert&width=400&height=400&seq=nhchef2&orientation=squarish', name: 'Chef Lê Thị Hương', role: 'Bếp Phó' },
-  { img: 'https://readdy.ai/api/search-image?query=male%20pastry%20chef%20portrait%20Vietnam%20restaurant%20dessert%20specialist%20elegant%20uniform%20professional&width=400&height=400&seq=nhchef3&orientation=squarish', name: 'Chef Trần Minh Khoa', role: 'Bếp Bánh' },
+  { img: 'https://readdy.ai/api/search-image?query=professional%20Vietnamese%20male%20chef%20portrait%20kitchen%20restaurant%20white%20uniform%20confident%20proud%20award%20winning%20culinary%20expert&width=400&height=400&seq=nhr_chef_01&orientation=squarish', name: 'Chef Nguyễn Thanh Bình', role: 'Bếp Trưởng' },
+  { img: 'https://readdy.ai/api/search-image?query=female%20Vietnamese%20chef%20portrait%20restaurant%20kitchen%20elegant%20professional%20white%20uniform%20skilled%20culinary%20expert%20smiling&width=400&height=400&seq=nhr_chef_02&orientation=squarish', name: 'Chef Lê Thị Hương', role: 'Bếp Phó' },
+  { img: 'https://readdy.ai/api/search-image?query=male%20pastry%20chef%20portrait%20Vietnam%20restaurant%20dessert%20specialist%20elegant%20white%20uniform%20professional%20holding%20cake&width=400&height=400&seq=nhr_chef_03&orientation=squarish', name: 'Chef Trần Minh Khoa', role: 'Bếp Bánh' },
 ];
 
 export default function DemoNhaHang() {
+  const [mobileMenu, setMobileMenu] = useState(false);
   const [activeCategory, setActiveCategory] = useState('Tất Cả');
   const [order, setOrder] = useState<Record<number, number>>({});
   const [showOrder, setShowOrder] = useState(false);
@@ -68,8 +69,21 @@ export default function DemoNhaHang() {
             <button onClick={() => setShowReserve(true)} className="hidden md:flex items-center gap-1.5 bg-amber-400 text-black text-xs font-bold px-4 py-2 rounded-full cursor-pointer whitespace-nowrap hover:bg-amber-300 transition-colors">
               <i className="ri-calendar-check-line text-xs"></i>Đặt Bàn
             </button>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center text-white/60">
+              <i className="ri-menu-line text-xl"></i>
+            </button>
           </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-white/10 px-4 py-3 space-y-2 bg-[#0D1117]">
+            {['Thực Đơn', 'Đặt Bàn', 'Về Chúng Tôi', 'Gallery', 'Liên Hệ'].map((item) => (
+              <button key={item} className="block w-full text-left text-sm text-white/60 py-1 cursor-pointer hover:text-amber-400">{item}</button>
+            ))}
+            <button onClick={() => setShowReserve(true)} className="w-full bg-amber-400 text-black text-xs font-bold px-4 py-2 rounded-full cursor-pointer mt-2">
+              <i className="ri-calendar-check-line text-xs"></i>Đặt Bàn
+            </button>
+          </div>
+        )}
       </header>
 
       {/* Hero */}

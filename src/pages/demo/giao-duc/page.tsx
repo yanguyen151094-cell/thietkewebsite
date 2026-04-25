@@ -7,12 +7,28 @@ const courses = [
   { id: 4, name: 'Tiếng Anh Cho Trẻ Em (6–12)', level: 'Thiếu Nhi', duration: '6 tháng', sessions: '3 buổi/tuần', price: 1800000, students: 2340, image: 'https://readdy.ai/api/search-image?query=children%20English%20class%20Vietnam%20kids%20happy%20learning%20colorful%20classroom%20fun%20interactive%20young%20students%20teacher&width=400&height=280&seq=edu04&orientation=landscape', tag: 'PHỔ BIẾN' },
   { id: 5, name: 'TOEIC 750+', level: 'Trung Cấp', duration: '2 tháng', sessions: '5 buổi/tuần', price: 2900000, students: 1100, image: 'https://readdy.ai/api/search-image?query=TOEIC%20preparation%20exam%20class%20Vietnam%20students%20corporate%20workforce%20English%20test%20certification%20focused&width=400&height=280&seq=edu05&orientation=landscape', tag: 'HOT' },
   { id: 6, name: 'Tiếng Anh Học Thuật', level: 'Cao Cấp', duration: '3 tháng', sessions: '3 buổi/tuần', price: 3500000, students: 420, image: 'https://readdy.ai/api/search-image?query=academic%20English%20class%20Vietnamese%20university%20students%20research%20writing%20reading%20advanced%20level%20professional&width=400&height=280&seq=edu06&orientation=landscape', tag: '' },
+  { id: 7, name: 'Tiếng Anh Du Lịch', level: 'Sơ Cấp', duration: '1 tháng', sessions: '3 buổi/tuần', price: 1500000, students: 780, image: 'https://readdy.ai/api/search-image?query=travel%20English%20class%20Vietnam%20students%20learning%20airport%20hotel%20vocabulary%20modern%20classroom%20interactive&width=400&height=280&seq=edu07&orientation=landscape', tag: 'MỚI' },
+  { id: 8, name: 'Tiếng Anh Phỏng Vấn', level: 'Nâng Cao', duration: '1 tháng', sessions: '2 buổi/tuần', price: 2200000, students: 650, image: 'https://readdy.ai/api/search-image?query=job%20interview%20English%20class%20Vietnam%20professionals%20practicing%20modern%20office%20role%20play%20confident&width=400&height=280&seq=edu08&orientation=landscape', tag: 'HOT' },
 ];
 
 const teachers = [
   { name: 'Ms. Sarah Johnson', origin: 'Người Mỹ Bản Ngữ', cert: 'CELTA · 8 năm', img: 'https://readdy.ai/api/search-image?query=professional%20American%20female%20English%20teacher%20portrait%20friendly%20warm%20smile%20clean%20white%20background%20education%20teaching%20photography&width=300&height=300&seq=tc01&orientation=squarish' },
   { name: 'Mr. David Thompson', origin: 'Người Anh Bản Ngữ', cert: 'DELTA · 12 năm', img: 'https://readdy.ai/api/search-image?query=professional%20British%20male%20English%20teacher%20portrait%20friendly%20confident%20clean%20background%20education%20teaching%20photography&width=300&height=300&seq=tc02&orientation=squarish' },
   { name: 'Th.S Nguyễn Lan Hương', origin: 'Giảng Viên ĐH', cert: 'MA TESOL · 10 năm', img: 'https://readdy.ai/api/search-image?query=professional%20Vietnamese%20female%20English%20teacher%20lecturer%20university%20portrait%20friendly%20clean%20background%20education%20photography&width=300&height=300&seq=tc03&orientation=squarish' },
+  { name: 'Mr. James Wilson', origin: 'Người Úc Bản Ngữ', cert: 'TESOL · 6 năm', img: 'https://readdy.ai/api/search-image?query=professional%20Australian%20male%20English%20teacher%20portrait%20friendly%20warm%20smile%20clean%20background%20education%20photography&width=300&height=300&seq=tc04&orientation=squarish' },
+];
+
+const testimonials = [
+  { name: 'Nguyễn Thị Hương', text: 'Học IELTS ở đây 4 tháng, đạt 7.0! Giáo viên bản ngữ rất tận tình, lộ trình rõ ràng.', rating: 5, course: 'IELTS Intensive' },
+  { name: 'Trần Văn Minh', text: 'Con mình 8 tuổi, học tiếng Anh thiếu nhi rất vui. Bé tự tin giao tiếp sau 3 tháng.', rating: 5, course: 'Tiếng Anh Thiếu Nhi' },
+  { name: 'Lê Thị Lan', text: 'Business English giúp mình tự tin đàm phán với đối tác nước ngoài. Rất đáng đầu tư!', rating: 5, course: 'Business English' },
+];
+
+const faqs = [
+  { q: 'Học thử miễn phí như thế nào?', a: 'Bạn đăng ký form trên web, chúng tôi sắp xếp 1 buổi học thử miễn phí với giáo viên bản ngữ. Không ràng buộc, không phí ẩn.' },
+  { q: 'Lớp học có bao nhiêu học viên?', a: 'Lớp nhóm tối đa 12 học viên để đảm bảo tương tác. Có lớp 1-1 riêng theo yêu cầu.' },
+  { q: 'Có cam kết đầu ra không?', a: 'Có! IELTS cam kết 6.5+, TOEIC cam kết 750+. Nếu không đạt, học lại miễn phí.' },
+  { q: 'Thời gian học linh hoạt không?', a: 'Có lịch sáng, chiều, tối và cuối tuần. Bạn chọn khung giờ phù hợp nhất.' },
 ];
 
 const levels = ['Tất Cả', 'Sơ Cấp', 'Trung Cấp', 'Nâng Cao', 'Thiếu Nhi', 'Cao Cấp'];
@@ -22,6 +38,8 @@ export default function DemoGiaoDuc() {
   const [showEnroll, setShowEnroll] = useState<typeof courses[0] | null>(null);
   const [form, setForm] = useState({ name: '', phone: '', email: '' });
   const [done, setDone] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const filtered = activeLevel === 'Tất Cả' ? courses : courses.filter(c => c.level === activeLevel);
 
@@ -44,10 +62,25 @@ export default function DemoGiaoDuc() {
               <button key={n} className="cursor-pointer hover:text-[#3B82F6] transition-colors">{n}</button>
             ))}
           </nav>
-          <button onClick={() => setShowEnroll(courses[0])} className="flex items-center gap-1.5 bg-[#1E40AF] text-white text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer whitespace-nowrap hover:bg-[#1D4ED8] transition-colors">
-            <i className="ri-user-add-line"></i>Đăng Ký Học Thử
-          </button>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setShowEnroll(courses[0])} className="hidden md:flex items-center gap-1.5 bg-[#1E40AF] text-white text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer whitespace-nowrap hover:bg-[#1D4ED8] transition-colors">
+              <i className="ri-user-add-line"></i>Đăng Ký Học Thử
+            </button>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center text-slate-600">
+              <i className="ri-menu-line text-xl"></i>
+            </button>
+          </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-slate-100 px-4 py-3 space-y-2 bg-white">
+            {['Khóa Học', 'Giáo Viên', 'Lịch Khai Giảng', 'Học Phí', 'Liên Hệ'].map(n => (
+              <button key={n} className="block w-full text-left text-sm text-slate-600 py-1 cursor-pointer hover:text-[#3B82F6]">{n}</button>
+            ))}
+            <button onClick={() => setShowEnroll(courses[0])} className="w-full bg-[#1E40AF] text-white text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer mt-2">
+              Đăng Ký Học Thử
+            </button>
+          </div>
+        )}
       </header>
 
       {/* Hero */}
@@ -98,7 +131,7 @@ export default function DemoGiaoDuc() {
             <button key={l} onClick={() => setActiveLevel(l)} className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap cursor-pointer transition-all ${activeLevel === l ? 'bg-[#1E40AF] text-white' : 'bg-slate-100 text-slate-600 hover:bg-[#EFF6FF] hover:text-[#3B82F6]'}`}>{l}</button>
           ))}
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5">
           {filtered.map(c => (
             <div key={c.id} className="border border-slate-100 rounded-2xl overflow-hidden hover:border-[#93C5FD] hover:-translate-y-1 transition-all group cursor-pointer" onClick={() => setShowEnroll(c)}>
               <div className="relative overflow-hidden">
@@ -130,7 +163,7 @@ export default function DemoGiaoDuc() {
             <span className="text-[#3B82F6] text-xs font-bold tracking-widest">ĐỘI NGŨ GIÁO VIÊN</span>
             <h2 className="text-2xl md:text-4xl font-black text-[#1E3A8A] mt-2">Người Bản Ngữ & Chuyên Gia TESOL</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
             {teachers.map(t => (
               <div key={t.name} className="bg-white rounded-2xl p-5 text-center border border-blue-100 hover:-translate-y-1 transition-all">
                 <div className="w-24 h-24 mx-auto mb-3 rounded-2xl overflow-hidden">
@@ -139,6 +172,51 @@ export default function DemoGiaoDuc() {
                 <h3 className="font-bold text-[#1E3A8A] text-sm mb-1">{t.name}</h3>
                 <p className="text-[#3B82F6] text-xs font-medium">{t.origin}</p>
                 <p className="text-slate-400 text-xs mt-1">{t.cert}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonials */}
+      <div className="max-w-6xl mx-auto px-4 md:px-6 py-14">
+        <div className="text-center mb-8">
+          <span className="text-[#3B82F6] text-xs font-bold tracking-widest">HỌC VIÊN NÓI GÌ?</span>
+          <h2 className="text-2xl font-black text-[#1E3A8A] mt-2">Kết Quả Thật Từ Học Viên Thật</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {testimonials.map(t => (
+            <div key={t.name} className="bg-[#EFF6FF] rounded-2xl p-5 border border-blue-100">
+              <div className="text-[#F59E0B] text-sm mb-2">{'★'.repeat(t.rating)}</div>
+              <p className="text-slate-600 text-sm leading-relaxed mb-3">"{t.text}"</p>
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="font-semibold text-[#1E3A8A] text-sm">{t.name}</span>
+                  <span className="text-[#3B82F6] text-xs ml-2">{t.course}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* FAQ */}
+      <div className="bg-[#F8FAFC] py-14">
+        <div className="max-w-3xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-8">
+            <span className="text-[#3B82F6] text-xs font-bold tracking-widest">CÂU HỎI THƯỜNG GẶP</span>
+            <h2 className="text-2xl font-black text-[#1E3A8A] mt-2">Bạn Thắc Mắc Gì?</h2>
+          </div>
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <div key={i} className="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full flex items-center justify-between px-5 py-4 text-left cursor-pointer hover:bg-slate-50 transition-colors">
+                  <span className="font-semibold text-[#1E3A8A] text-sm">{faq.q}</span>
+                  <i className={`${openFaq === i ? 'ri-subtract-line' : 'ri-add-line'} text-[#3B82F6] flex-shrink-0 ml-2`}></i>
+                </button>
+                {openFaq === i && (
+                  <div className="px-5 pb-4 text-slate-500 text-sm leading-relaxed border-t border-slate-100">{faq.a}</div>
+                )}
               </div>
             ))}
           </div>

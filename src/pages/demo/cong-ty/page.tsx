@@ -30,6 +30,7 @@ const process = [
 ];
 
 export default function DemoCongTy() {
+  const [mobileMenu, setMobileMenu] = useState(false);
   const [activeProject, setActiveProject] = useState<typeof projects[0] | null>(null);
 
   return (
@@ -51,11 +52,25 @@ export default function DemoCongTy() {
               <button key={item} className="cursor-pointer hover:text-[#1E293B] font-medium transition-colors">{item}</button>
             ))}
           </nav>
-          <a href="tel:0901234567" className="hidden md:flex items-center gap-1.5 bg-[#1E293B] text-white text-xs font-bold px-5 py-2.5 rounded-full cursor-pointer whitespace-nowrap hover:bg-slate-700 transition-colors">
-            <i className="ri-phone-line text-xs"></i>Tư Vấn Miễn Phí
-          </a>
-          <button className="md:hidden text-slate-700"><i className="ri-menu-line text-2xl"></i></button>
+          <div className="flex items-center gap-2">
+            <a href="tel:0901234567" className="hidden md:flex items-center gap-1.5 bg-[#1E293B] text-white text-xs font-bold px-5 py-2.5 rounded-full cursor-pointer whitespace-nowrap hover:bg-slate-700 transition-colors">
+              <i className="ri-phone-line text-xs"></i>Tư Vấn Miễn Phí
+            </a>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center text-slate-700">
+              <i className="ri-menu-line text-2xl"></i>
+            </button>
+          </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-slate-100 px-4 py-3 space-y-2 bg-white">
+            {['Dịch Vụ', 'Dự Án', 'Đội Ngũ', 'Quy Trình', 'Liên Hệ'].map((item) => (
+              <button key={item} className="block w-full text-left text-sm text-slate-600 py-1 cursor-pointer hover:text-[#1E293B]">{item}</button>
+            ))}
+            <a href="tel:0901234567" className="flex items-center gap-1.5 bg-[#1E293B] text-white text-xs font-bold px-5 py-2.5 rounded-full cursor-pointer mt-2 w-fit">
+              <i className="ri-phone-line text-xs"></i>Tư Vấn Miễn Phí
+            </a>
+          </div>
+        )}
       </header>
 
       {/* Hero */}

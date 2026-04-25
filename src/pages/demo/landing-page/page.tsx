@@ -24,6 +24,12 @@ const cases = [
   { biz: 'Homestay Đà Lạt', result: 'Booking trực tiếp x4', before: '80% qua OTA', after: '70% trực tiếp', platform: 'Google Ads', img: 'https://readdy.ai/api/search-image?query=boutique%20homestay%20Dalat%20Vietnam%20booking%20direct%20marketing%20photography&width=400&height=280&seq=cs003&orientation=landscape' },
 ];
 
+const testimonials = [
+  { name: 'Chị Nguyễn Thị Lan', biz: 'Spa Ánh Dương', text: 'AdsPro giúp spa của tôi tăng từ 12 khách/tháng lên 87 khách chỉ trong tháng đầu. ROI x4.5!', rating: 5 },
+  { name: 'Anh Trần Văn Hùng', biz: 'Shop Giày Online', text: 'Chạy TikTok + Facebook Ads, đơn hàng tăng gần 5 lần. Chi phí quảng cáo giảm 30% so với tự chạy.', rating: 5 },
+  { name: 'Chị Lê Thị Hoa', biz: 'Homestay Đà Lạt', text: 'Từ 80% booking qua OTA, giờ 70% khách đặt trực tiếp. Lợi nhuận tăng đáng kể!', rating: 5 },
+];
+
 const faqs = [
   { q: 'Ngân sách tối thiểu để chạy quảng cáo là bao nhiêu?', a: 'Chúng tôi nhận quản lý từ 5 triệu/tháng trở lên. Tuy nhiên để thấy kết quả rõ ràng, khuyến nghị ngân sách từ 10–20 triệu/tháng.' },
   { q: 'Bao lâu thì thấy kết quả?', a: 'Thông thường sau 2–4 tuần đầu chạy tối ưu, bạn sẽ thấy leads đổ về. Tháng thứ 2–3 là lúc hệ thống ổn định và ROI tăng mạnh.' },
@@ -35,6 +41,7 @@ export default function DemoLandingPage() {
   const [formData, setFormData] = useState({ name: '', phone: '', service: '', note: '' });
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -58,10 +65,22 @@ export default function DemoLandingPage() {
               <button key={n} className="cursor-pointer hover:text-white transition-colors">{n}</button>
             ))}
           </nav>
-          <a href="tel:0901234567" className="flex items-center gap-1.5 bg-[#00E5FF] text-black text-xs font-extrabold px-4 py-2 rounded-full cursor-pointer whitespace-nowrap hover:bg-cyan-300 transition-colors">
-            <i className="ri-phone-fill text-xs"></i>0901 234 567
-          </a>
+          <div className="flex items-center gap-2">
+            <a href="tel:0901234567" className="hidden md:flex items-center gap-1.5 bg-[#00E5FF] text-black text-xs font-extrabold px-4 py-2 rounded-full cursor-pointer whitespace-nowrap hover:bg-cyan-300 transition-colors">
+              <i className="ri-phone-fill text-xs"></i>0901 234 567
+            </a>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center text-white/60">
+              <i className="ri-menu-line text-xl"></i>
+            </button>
+          </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-white/10 px-4 py-3 space-y-2 bg-[#05070F]">
+            {['Dịch Vụ', 'Case Study', 'FAQ', 'Liên Hệ'].map(n => (
+              <button key={n} className="block w-full text-left text-sm text-white/60 py-1 cursor-pointer hover:text-white">{n}</button>
+            ))}
+          </div>
+        )}
       </header>
 
       {/* Hero */}
@@ -162,6 +181,26 @@ export default function DemoLandingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Testimonials */}
+      <div className="max-w-5xl mx-auto px-4 py-14">
+        <div className="text-center mb-8">
+          <h2 className="text-2xl font-black text-white">Khách Hàng Nói Gì?</h2>
+          <p className="text-white/40 text-sm mt-2">Phản hồi từ doanh nghiệp đã hợp tác với AdsPro</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {testimonials.map(t => (
+            <div key={t.name} className="bg-white/5 rounded-2xl p-5 border border-white/10">
+              <div className="text-[#00E5FF] text-sm mb-2">{'★'.repeat(t.rating)}</div>
+              <p className="text-white/60 text-sm leading-relaxed mb-3">"{t.text}"</p>
+              <div>
+                <span className="text-white font-semibold text-sm">{t.name}</span>
+                <span className="text-white/40 text-xs ml-2">— {t.biz}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 

@@ -17,6 +17,7 @@ const services = [
 ];
 
 export default function DemoPhongKham() {
+  const [mobileMenu, setMobileMenu] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', service: '', date: '', time: '' });
   const [booked, setBooked] = useState(false);
   const [showBook, setShowBook] = useState(false);
@@ -44,10 +45,25 @@ export default function DemoPhongKham() {
               <button key={n} className="cursor-pointer hover:text-[#0284C7] transition-colors">{n}</button>
             ))}
           </nav>
-          <button onClick={() => setShowBook(true)} className="flex items-center gap-1.5 bg-[#0284C7] text-white text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer whitespace-nowrap hover:bg-[#0369A1] transition-colors">
-            <i className="ri-calendar-check-line"></i>Đặt Lịch Khám
-          </button>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setShowBook(true)} className="hidden md:flex items-center gap-1.5 bg-[#0284C7] text-white text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer whitespace-nowrap hover:bg-[#0369A1] transition-colors">
+              <i className="ri-calendar-check-line"></i>Đặt Lịch Khám
+            </button>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center text-[#0284C7]">
+              <i className="ri-menu-line text-xl"></i>
+            </button>
+          </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-slate-100 px-4 py-3 space-y-2 bg-white">
+            {['Trang Chủ', 'Dịch Vụ', 'Đội Ngũ BS', 'Đặt Lịch', 'Liên Hệ'].map(n => (
+              <button key={n} className="block w-full text-left text-sm text-slate-600 py-1 cursor-pointer hover:text-[#0284C7]">{n}</button>
+            ))}
+            <button onClick={() => setShowBook(true)} className="w-full bg-[#0284C7] text-white text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer mt-2">
+              <i className="ri-calendar-check-line"></i>Đặt Lịch Khám
+            </button>
+          </div>
+        )}
       </header>
 
       {/* Hero */}

@@ -132,11 +132,11 @@ export default function TemplatesPage() {
                     style={{ transitionDelay: `${i * 50}ms` }}
                   >
                     {/* Image Area */}
-                    <div className="relative h-36 md:h-56 overflow-hidden">
+                    <div className="relative h-44 md:h-52 overflow-hidden">
                       <img
                         src={tpl.image}
                         alt={tpl.name}
-                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                       />
                       {/* Overlay on hover (desktop) */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center gap-2">

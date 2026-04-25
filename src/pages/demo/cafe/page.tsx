@@ -1,22 +1,41 @@
 import { useState } from 'react';
 
 const menuDrinks = [
-  { id: 1, cat: 'Cà Phê', name: 'Cold Brew Phúc Long', price: 55000, image: 'https://readdy.ai/api/search-image?query=cold%20brew%20iced%20coffee%20Vietnamese%20cafe%20glass%20elegant%20professional%20food%20photography%20dark%20background%20minimal%20wooden%20table&width=400&height=300&seq=cafe01&orientation=landscape', hot: true },
-  { id: 2, cat: 'Cà Phê', name: 'Cappuccino Ý', price: 65000, image: 'https://readdy.ai/api/search-image?query=cappuccino%20coffee%20cup%20latte%20art%20foam%20beautiful%20caf%C3%A9%20drink%20professional%20food%20photography%20warm%20brown%20tones%20minimal&width=400&height=300&seq=cafe02&orientation=landscape', hot: false },
-  { id: 3, cat: 'Cà Phê', name: 'Bạc Xỉu Sữa Tươi', price: 45000, image: 'https://readdy.ai/api/search-image?query=Vietnamese%20bac%20xiu%20milk%20coffee%20iced%20glass%20cafe%20drink%20professional%20food%20photography%20white%20background%20minimal%20elegant&width=400&height=300&seq=cafe03&orientation=landscape', hot: true },
-  { id: 4, cat: 'Trà & Nước', name: 'Trà Đào Cam Sả', price: 55000, image: 'https://readdy.ai/api/search-image?query=peach%20lemongrass%20iced%20tea%20Vietnamese%20cafe%20drink%20glass%20beautiful%20food%20photography%20tropical%20fruity%20minimal%20elegant&width=400&height=300&seq=cafe04&orientation=landscape', hot: false },
-  { id: 5, cat: 'Trà & Nước', name: 'Matcha Latte Nhật', price: 65000, image: 'https://readdy.ai/api/search-image?query=matcha%20latte%20green%20tea%20milk%20Japanese%20style%20beautiful%20glass%20drink%20cafe%20professional%20food%20photography%20minimal&width=400&height=300&seq=cafe05&orientation=landscape', hot: false },
-  { id: 6, cat: 'Bánh & Ăn Nhẹ', name: 'Bánh Croissant Bơ', price: 40000, image: 'https://readdy.ai/api/search-image?query=butter%20croissant%20pastry%20breakfast%20cafe%20golden%20baked%20fresh%20beautiful%20food%20photography%20minimal%20white%20background&width=400&height=300&seq=cafe06&orientation=landscape', hot: false },
-  { id: 7, cat: 'Bánh & Ăn Nhẹ', name: 'Cheesecake Dâu Tây', price: 55000, image: 'https://readdy.ai/api/search-image?query=strawberry%20cheesecake%20slice%20dessert%20cafe%20beautiful%20food%20photography%20elegant%20minimal%20plate%20presentation&width=400&height=300&seq=cafe07&orientation=landscape', hot: true },
-  { id: 8, cat: 'Đặc Biệt', name: 'The Brew Signature', price: 75000, image: 'https://readdy.ai/api/search-image?query=signature%20coffee%20drink%20special%20menu%20cafe%20premium%20beautiful%20glass%20artistic%20presentation%20food%20photography%20minimal&width=400&height=300&seq=cafe08&orientation=landscape', hot: true },
+  { id: 1, cat: 'Cà Phê', name: 'Cold Brew Phúc Long', price: 55000, image: 'https://readdy.ai/api/search-image?query=cold%20brew%20iced%20coffee%20Vietnamese%20cafe%20tall%20glass%20ice%20cubes%20dark%20espresso%20elegant%20professional%20food%20photography%20wooden%20table%20minimal%20background&width=500&height=360&seq=cafe_menu_01&orientation=landscape', hot: true },
+  { id: 2, cat: 'Cà Phê', name: 'Cappuccino Ý', price: 65000, image: 'https://readdy.ai/api/search-image?query=cappuccino%20coffee%20cup%20beautiful%20latte%20art%20foam%20rosette%20warm%20brown%20tones%20ceramic%20mug%20cafe%20professional%20food%20photography%20minimal%20white%20background&width=500&height=360&seq=cafe_menu_02&orientation=landscape', hot: false },
+  { id: 3, cat: 'Cà Phê', name: 'Bạc Xỉu Sữa Tươi', price: 45000, image: 'https://readdy.ai/api/search-image?query=Vietnamese%20bac%20xiu%20condensed%20milk%20iced%20coffee%20glass%20straw%20cafe%20drink%20professional%20food%20photography%20clean%20white%20marble%20background%20minimal&width=500&height=360&seq=cafe_menu_03&orientation=landscape', hot: true },
+  { id: 4, cat: 'Trà & Nước', name: 'Trà Đào Cam Sả', price: 55000, image: 'https://readdy.ai/api/search-image?query=peach%20lemongrass%20iced%20tea%20Vietnamese%20cafe%20tall%20glass%20orange%20slices%20herbs%20beautiful%20food%20photography%20tropical%20fruity%20pastel%20background&width=500&height=360&seq=cafe_menu_04&orientation=landscape', hot: false },
+  { id: 5, cat: 'Trà & Nước', name: 'Matcha Latte Nhật', price: 65000, image: 'https://readdy.ai/api/search-image?query=matcha%20green%20tea%20latte%20milk%20foam%20Japanese%20style%20beautiful%20glass%20drink%20cafe%20professional%20food%20photography%20clean%20light%20background%20minimal&width=500&height=360&seq=cafe_menu_05&orientation=landscape', hot: false },
+  { id: 6, cat: 'Bánh & Ăn Nhẹ', name: 'Bánh Croissant Bơ', price: 40000, image: 'https://readdy.ai/api/search-image?query=butter%20croissant%20pastry%20breakfast%20cafe%20golden%20flaky%20baked%20fresh%20beautiful%20food%20photography%20minimal%20white%20plate%20wooden%20board&width=500&height=360&seq=cafe_menu_06&orientation=landscape', hot: false },
+  { id: 7, cat: 'Bánh & Ăn Nhẹ', name: 'Cheesecake Dâu Tây', price: 55000, image: 'https://readdy.ai/api/search-image?query=strawberry%20cheesecake%20slice%20dessert%20cafe%20beautiful%20food%20photography%20elegant%20minimal%20white%20plate%20fresh%20berries%20cream&width=500&height=360&seq=cafe_menu_07&orientation=landscape', hot: true },
+  { id: 8, cat: 'Đặc Biệt', name: 'The Brew Signature', price: 75000, image: 'https://readdy.ai/api/search-image?query=signature%20specialty%20coffee%20drink%20premium%20cafe%20beautiful%20glass%20artistic%20layered%20presentation%20food%20photography%20minimal%20dark%20background&width=500&height=360&seq=cafe_menu_08&orientation=landscape', hot: true },
+  { id: 9, cat: 'Cà Phê', name: 'Espresso Tonic', price: 60000, image: 'https://readdy.ai/api/search-image?query=espresso%20tonic%20coffee%20cocktail%20glass%20ice%20bubbles%20modern%20cafe%20drink%20beautiful%20food%20photography%20minimal%20clean%20background&width=500&height=360&seq=cafe_menu_09&orientation=landscape', hot: false },
+  { id: 10, cat: 'Trà & Nước', name: 'Trà Sữa Trân Châu', price: 45000, image: 'https://readdy.ai/api/search-image?query=bubble%20milk%20tea%20boba%20pearls%20Vietnamese%20cafe%20drink%20beautiful%20glass%20food%20photography%20minimal%20clean%20background&width=500&height=360&seq=cafe_menu_10&orientation=landscape', hot: false },
+  { id: 11, cat: 'Bánh & Ăn Nhẹ', name: 'Tiramisu Ý', price: 65000, image: 'https://readdy.ai/api/search-image?query=tiramisu%20Italian%20dessert%20cafe%20beautiful%20food%20photography%20elegant%20minimal%20white%20plate%20cocoa%20powder%20cream%20layers&width=500&height=360&seq=cafe_menu_11&orientation=landscape', hot: false },
+  { id: 12, cat: 'Đặc Biệt', name: 'Affogato Caramel', price: 55000, image: 'https://readdy.ai/api/search-image?query=affogato%20ice%20cream%20espresso%20caramel%20sauce%20beautiful%20glass%20cafe%20dessert%20food%20photography%20minimal%20elegant&width=500&height=360&seq=cafe_menu_12&orientation=landscape', hot: true },
+];
+
+const gallery = [
+  'https://readdy.ai/api/search-image?query=cozy%20specialty%20coffee%20shop%20interior%20Vietnam%20warm%20brown%20wooden%20tones%20barista%20making%20coffee%20beautiful%20atmosphere%20soft%20lighting%20elegant%20minimal%20cafe%20ambiance%20morning%20light&width=600&height=400&seq=cafe_gal_01&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=coffee%20shop%20latte%20art%20close%20up%20beautiful%20cappuccino%20rosetta%20foam%20art%20ceramic%20cup%20warm%20tones%20professional%20food%20photography&width=600&height=400&seq=cafe_gal_02&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=cafe%20outdoor%20seating%20terrace%20Vietnam%20warm%20afternoon%20sunlight%20wooden%20tables%20plants%20cozy%20atmosphere%20beautiful&width=600&height=400&seq=cafe_gal_03&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=coffee%20beans%20roasting%20machine%20specialty%20cafe%20Vietnam%20warm%20brown%20tones%20professional%20photography%20close%20up&width=600&height=400&seq=cafe_gal_04&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=cafe%20pastry%20display%20case%20croissants%20cakes%20desserts%20beautiful%20warm%20lighting%20glass%20shelves%20elegant%20minimal&width=600&height=400&seq=cafe_gal_05&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=cafe%20bar%20counter%20espresso%20machine%20professional%20barista%20working%20warm%20lighting%20Vietnam%20beautiful%20atmosphere&width=600&height=400&seq=cafe_gal_06&orientation=landscape',
 ];
 
 const cats = ['Tất Cả', 'Cà Phê', 'Trà & Nước', 'Bánh & Ăn Nhẹ', 'Đặc Biệt'];
 
 const branches = [
-  { name: 'Chi Nhánh Hoàn Kiếm', addr: '12 Hàng Gai, Hoàn Kiếm, Hà Nội', hours: '07:00 – 22:00' },
-  { name: 'Chi Nhánh Ba Đình', addr: '45 Đội Cấn, Ba Đình, Hà Nội', hours: '07:00 – 22:00' },
-  { name: 'Chi Nhánh Cầu Giấy', addr: '88 Xuân Thủy, Cầu Giấy, Hà Nội', hours: '07:30 – 22:30' },
+  { name: 'Chi Nhánh Hoàn Kiếm', addr: '12 Hàng Gai, Hoàn Kiếm, Hà Nội', hours: '07:00 – 22:00', img: 'https://readdy.ai/api/search-image?query=coffee%20shop%20storefront%20Vietnam%20old%20quarter%20Hanoi%20street%20view%20warm%20evening%20lights%20cozy%20entrance%20beautiful&width=400&height=280&seq=cafe_br1&orientation=landscape' },
+  { name: 'Chi Nhánh Ba Đình', addr: '45 Đội Cấn, Ba Đình, Hà Nội', hours: '07:00 – 22:00', img: 'https://readdy.ai/api/search-image?query=modern%20coffee%20shop%20exterior%20Vietnam%20urban%20street%20clean%20facade%20glass%20windows%20warm%20lighting%20beautiful&width=400&height=280&seq=cafe_br2&orientation=landscape' },
+  { name: 'Chi Nhánh Cầu Giấy', addr: '88 Xuân Thủy, Cầu Giấy, Hà Nội', hours: '07:30 – 22:30', img: 'https://readdy.ai/api/search-image?query=cozy%20coffee%20shop%20corner%20Vietnam%20modern%20interior%20plants%20warm%20lighting%20comfortable%20seating%20beautiful&width=400&height=280&seq=cafe_br3&orientation=landscape' },
+];
+
+const reviews = [
+  { name: 'Nguyễn Văn Hùng', text: 'Cold Brew ở đây ngon nhất Hà Nội! Không gian yên tĩnh, rất thích hợp để làm việc.', rating: 5, date: '20/04/2025' },
+  { name: 'Trần Thị Mai', text: 'Bánh croissant giòn rụm, bơ thơm. Matcha latte đậm vị, không bị ngọt quá.', rating: 5, date: '18/04/2025' },
+  { name: 'Lê Minh Tuấn', text: 'Nhân viên thân thiện, phục vụ nhanh. Loyalty card tích điểm rất tiện lợi.', rating: 4, date: '15/04/2025' },
 ];
 
 export default function DemoCafe() {
@@ -24,6 +43,7 @@ export default function DemoCafe() {
   const [cart, setCart] = useState<Record<number, number>>({});
   const [showCart, setShowCart] = useState(false);
   const [loyalty, setLoyalty] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const filtered = activeCat === 'Tất Cả' ? menuDrinks : menuDrinks.filter(d => d.cat === activeCat);
   const totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
@@ -61,13 +81,23 @@ export default function DemoCafe() {
             <a href="tel:0901234567" className="hidden md:flex items-center gap-1.5 bg-amber-600 text-white text-xs font-bold px-4 py-2 rounded-full cursor-pointer whitespace-nowrap hover:bg-amber-500 transition-colors">
               <i className="ri-phone-fill text-xs"></i>Đặt Chỗ
             </a>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center text-white/60">
+              <i className="ri-menu-line text-xl"></i>
+            </button>
           </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-white/10 px-4 py-3 space-y-2 bg-[#1A0F0A]">
+            {['Thực Đơn', 'Chi Nhánh', 'Loyalty', 'Về Chúng Tôi'].map(n => (
+              <button key={n} className="block w-full text-left text-sm text-white/60 py-1 cursor-pointer hover:text-amber-400">{n}</button>
+            ))}
+          </div>
+        )}
       </header>
 
       {/* Hero */}
       <div className="relative h-[60vh] md:h-[75vh] overflow-hidden">
-        <img src="https://readdy.ai/api/search-image?query=cozy%20specialty%20coffee%20shop%20interior%20Vietnam%20warm%20brown%20wooden%20tones%20barista%20making%20coffee%20beautiful%20atmosphere%20soft%20lighting%20elegant%20minimal%20cafe%20ambiance&width=1400&height=800&seq=cafehero&orientation=landscape" alt="The Brew Co." className="w-full h-full object-cover object-center" />
+        <img src="https://readdy.ai/api/search-image?query=cozy%20specialty%20coffee%20shop%20interior%20Vietnam%20warm%20brown%20wooden%20tones%20barista%20making%20coffee%20beautiful%20atmosphere%20soft%20lighting%20elegant%20minimal%20cafe%20ambiance%20morning%20light&width=1400&height=800&seq=cafe_hero_main&orientation=landscape" alt="The Brew Co." className="w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1A0F0A]/40 via-[#1A0F0A]/10 to-[#1A0F0A]"></div>
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <span className="inline-block bg-amber-600/30 border border-amber-500/40 text-amber-300 text-xs font-bold px-4 py-1.5 rounded-full mb-5 tracking-widest">3 CHI NHÁNH · HÀ NỘI</span>
@@ -98,12 +128,11 @@ export default function DemoCafe() {
 
       {/* About */}
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-3 gap-3">
           {[
-            'https://readdy.ai/api/search-image?query=barista%20hands%20making%20pour%20over%20coffee%20Vietnamese%20cafe%20beautiful%20close%20up%20professional%20photography%20warm%20tones&width=400&height=300&seq=cafeab1&orientation=landscape',
-            'https://readdy.ai/api/search-image?query=coffee%20beans%20roasting%20specialty%20single%20origin%20Vietnam%20beautiful%20macro%20photography%20warm%20brown%20tones&width=400&height=300&seq=cafeab2&orientation=landscape',
-            'https://readdy.ai/api/search-image?query=cozy%20cafe%20corner%20seat%20wooden%20table%20window%20light%20Vietnam%20coffee%20shop%20interior%20minimal%20warm&width=400&height=300&seq=cafeab3&orientation=landscape',
-            'https://readdy.ai/api/search-image?query=latte%20art%20milk%20foam%20coffee%20cup%20beautiful%20artistic%20Vietnamese%20cafe%20specialty%20drink&width=400&height=300&seq=cafeab4&orientation=landscape',
+            'https://readdy.ai/api/search-image?query=barista%20hands%20making%20pour%20over%20coffee%20Vietnamese%20cafe%20beautiful%20close%20up%20professional%20photography%20warm%20tones%20wooden%20counter&width=500&height=360&seq=cafe_about_01&orientation=landscape',
+            'https://readdy.ai/api/search-image?query=coffee%20beans%20roasting%20specialty%20single%20origin%20Vietnam%20beautiful%20macro%20photography%20warm%20brown%20tones%20dark%20background&width=500&height=360&seq=cafe_about_02&orientation=landscape',
+            'https://readdy.ai/api/search-image?query=cozy%20cafe%20corner%20seat%20wooden%20table%20window%20light%20Vietnam%20coffee%20shop%20interior%20minimal%20warm%20afternoon&width=500&height=360&seq=cafe_about_03&orientation=landscape',
           ].map((img, i) => (
             <div key={i} className="rounded-xl overflow-hidden">
               <img src={img} alt="" className="w-full h-36 object-cover object-center hover:scale-105 transition-transform duration-500" />
@@ -126,6 +155,23 @@ export default function DemoCafe() {
         </div>
       </div>
 
+      {/* Gallery */}
+      <div className="bg-white/5 border-t border-white/10 py-10">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-6">
+            <span className="text-amber-500 text-xs font-bold tracking-widest">KHÔNG GIAN</span>
+            <h2 className="text-2xl font-black text-white mt-2" style={{ fontFamily: 'Georgia, serif' }}>Khám Phá The Brew Co.</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {gallery.map((img, i) => (
+              <div key={i} className={`rounded-xl overflow-hidden ${i === 0 ? 'md:col-span-2 md:row-span-1' : ''}`}>
+                <img src={img} alt={`Gallery ${i+1}`} className="w-full h-40 md:h-48 object-cover object-center hover:scale-105 transition-transform duration-500" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Menu */}
       <div id="menu" className="max-w-6xl mx-auto px-4 md:px-6 pb-10">
         <div className="text-center mb-8">
@@ -137,11 +183,11 @@ export default function DemoCafe() {
             <button key={cat} onClick={() => setActiveCat(cat)} className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap cursor-pointer transition-all ${activeCat === cat ? 'bg-amber-600 text-white' : 'border border-white/20 text-white/60 hover:border-amber-500/50 hover:text-white'}`}>{cat}</button>
           ))}
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {filtered.map(item => (
             <div key={item.id} className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-amber-600/40 transition-all group cursor-pointer">
               <div className="relative overflow-hidden">
-                <img src={item.image} alt={item.name} className="w-full h-40 object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+                <img src={item.image} alt={item.name} className="w-full h-44 object-cover object-center group-hover:scale-105 transition-transform duration-500" />
                 {item.hot && <span className="absolute top-2 left-2 bg-amber-500 text-black text-[10px] font-black px-2 py-0.5 rounded-full">☕ HOT</span>}
               </div>
               <div className="p-3">
@@ -165,19 +211,44 @@ export default function DemoCafe() {
         </div>
       </div>
 
+      {/* Reviews */}
+      <div className="bg-white/5 border-t border-white/10 py-10">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-6">
+            <span className="text-amber-500 text-xs font-bold tracking-widest">ĐÁNH GIÁ</span>
+            <h2 className="text-2xl font-black text-white mt-2" style={{ fontFamily: 'Georgia, serif' }}>Khách Hàng Nói Gì?</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {reviews.map(r => (
+              <div key={r.name} className="bg-white/5 rounded-2xl p-5 border border-white/10">
+                <div className="text-amber-400 text-sm mb-2">{'★'.repeat(r.rating)}</div>
+                <p className="text-white/60 text-sm leading-relaxed mb-3">"{r.text}"</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-white font-semibold text-sm">{r.name}</span>
+                  <span className="text-white/30 text-xs">{r.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Branches */}
       <div className="bg-white/5 border-t border-white/10 py-12">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <h2 className="text-center text-2xl font-black text-white mb-8" style={{ fontFamily: 'Georgia, serif' }}>Hệ Thống Chi Nhánh</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {branches.map(b => (
-              <div key={b.name} className="bg-white/5 rounded-2xl p-5 border border-white/10 hover:border-amber-600/40 transition-all">
-                <div className="w-10 h-10 flex items-center justify-center bg-amber-700/30 rounded-xl mb-3">
-                  <i className="ri-store-2-line text-amber-400 text-lg"></i>
+              <div key={b.name} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-amber-600/40 transition-all">
+                <img src={b.img} alt={b.name} className="w-full h-36 object-cover object-center" />
+                <div className="p-5">
+                  <div className="w-10 h-10 flex items-center justify-center bg-amber-700/30 rounded-xl mb-3">
+                    <i className="ri-store-2-line text-amber-400 text-lg"></i>
+                  </div>
+                  <h3 className="text-white font-bold text-sm mb-2">{b.name}</h3>
+                  <p className="text-white/40 text-xs mb-1"><i className="ri-map-pin-line mr-1"></i>{b.addr}</p>
+                  <p className="text-amber-400 text-xs font-medium"><i className="ri-time-line mr-1"></i>{b.hours}</p>
                 </div>
-                <h3 className="text-white font-bold text-sm mb-2">{b.name}</h3>
-                <p className="text-white/40 text-xs mb-1"><i className="ri-map-pin-line mr-1"></i>{b.addr}</p>
-                <p className="text-amber-400 text-xs font-medium"><i className="ri-time-line mr-1"></i>{b.hours}</p>
               </div>
             ))}
           </div>

@@ -20,6 +20,7 @@ const reviews = [
 ];
 
 export default function DemoHaiSan() {
+  const [mobileMenu, setMobileMenu] = useState(false);
   const [activeCat, setActiveCat] = useState('Tất Cả');
   const [order, setOrder] = useState<Record<number, number>>({});
   const [showOrderSummary, setShowOrderSummary] = useState(false);
@@ -60,11 +61,24 @@ export default function DemoHaiSan() {
               </div>
               {totalItems > 0 && <span className="absolute -top-1 -right-1 w-4 h-4 bg-cyan-500 text-black text-[10px] font-bold rounded-full flex items-center justify-center">{totalItems}</span>}
             </button>
-            <button onClick={() => setShowBook(true)} className="flex items-center gap-1.5 text-white text-xs font-bold px-4 py-2.5 rounded-full cursor-pointer whitespace-nowrap" style={{ background: 'linear-gradient(90deg,#0284c7,#06b6d4)' }}>
+            <button onClick={() => setShowBook(true)} className="hidden md:flex items-center gap-1.5 text-white text-xs font-bold px-4 py-2.5 rounded-full cursor-pointer whitespace-nowrap" style={{ background: 'linear-gradient(90deg,#0284c7,#06b6d4)' }}>
               <i className="ri-calendar-check-line"></i>Đặt Bàn
+            </button>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center text-white/60">
+              <i className="ri-menu-line text-xl"></i>
             </button>
           </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-white/10 px-4 py-3 space-y-2" style={{ background: '#071520' }}>
+            {['Thực Đơn', 'Đặt Bàn', 'Về Chúng Tôi', 'Liên Hệ'].map(n => (
+              <button key={n} className="block w-full text-left text-sm py-1 cursor-pointer hover:text-white" style={{ color: 'rgba(255,255,255,0.6)' }}>{n}</button>
+            ))}
+            <button onClick={() => setShowBook(true)} className="w-full text-white text-xs font-bold px-4 py-2 rounded-full cursor-pointer mt-2" style={{ background: 'linear-gradient(90deg,#0284c7,#06b6d4)' }}>
+              <i className="ri-calendar-check-line"></i>Đặt Bàn
+            </button>
+          </div>
+        )}
       </header>
 
       {/* Hero */}

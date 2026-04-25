@@ -19,6 +19,22 @@ const trainers = [
   { name: 'PT. Nguyễn Minh Tú', spec: 'HIIT & Strength', cert: 'ACE CPT', img: 'https://readdy.ai/api/search-image?query=professional%20male%20Vietnamese%20fitness%20personal%20trainer%20gym%20muscular%20athletic%20portrait%20confident%20dark%20background%20professional%20photography&width=300&height=300&seq=pt01&orientation=squarish' },
   { name: 'PT. Trần Lan Anh', spec: 'Yoga & Flexibility', cert: 'RYT 200', img: 'https://readdy.ai/api/search-image?query=professional%20female%20Vietnamese%20yoga%20fitness%20trainer%20gym%20athletic%20portrait%20confident%20clean%20studio%20background%20professional%20photography&width=300&height=300&seq=pt02&orientation=squarish' },
   { name: 'PT. Lê Quốc Bảo', spec: 'Powerlifting', cert: 'NSCA CSCS', img: 'https://readdy.ai/api/search-image?query=professional%20male%20Vietnamese%20powerlifting%20fitness%20trainer%20gym%20strong%20athletic%20portrait%20dark%20background%20professional%20photography&width=300&height=300&seq=pt03&orientation=squarish' },
+  { name: 'PT. Phạm Thu Hà', spec: 'Zumba & Dance', cert: 'AFAA GFI', img: 'https://readdy.ai/api/search-image?query=professional%20female%20Vietnamese%20dance%20fitness%20trainer%20gym%20athletic%20portrait%20confident%20colorful%20background%20professional%20photography&width=300&height=300&seq=pt04&orientation=squarish' },
+];
+
+const gallery = [
+  'https://readdy.ai/api/search-image?query=modern%20gym%20fitness%20center%20interior%20dark%20dramatic%20lighting%20equipment%20weights%20machines%20professional%20photography%20Vietnam&width=600&height=400&seq=gym_gal_01&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=gym%20weight%20training%20area%20dumbbells%20barbells%20rack%20dark%20modern%20professional%20photography%20Vietnam&width=600&height=400&seq=gym_gal_02&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=gym%20cardio%20area%20treadmills%20ellipticals%20modern%20dark%20lighting%20professional%20photography%20Vietnam&width=600&height=400&seq=gym_gal_03&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=gym%20yoga%20studio%20room%20wooden%20floor%20mirrors%20peaceful%20calm%20lighting%20professional%20photography%20Vietnam&width=600&height=400&seq=gym_gal_04&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=gym%20locker%20room%20modern%20clean%20showers%20sauna%20spa%20area%20professional%20photography%20Vietnam&width=600&height=400&seq=gym_gal_05&orientation=landscape',
+  'https://readdy.ai/api/search-image?query=gym%20group%20class%20room%20mirrors%20sound%20system%20modern%20dark%20lighting%20professional%20photography%20Vietnam&width=600&height=400&seq=gym_gal_06&orientation=landscape',
+];
+
+const testimonials = [
+  { name: 'Nguyễn Văn Hùng', text: 'Tập ở Iron Core 6 tháng, giảm 8kg. PT Minh Tú rất chuyên nghiệp, lịch tập rõ ràng.', rating: 5, plan: 'Gói Pro' },
+  { name: 'Trần Thị Mai', text: 'Lớp Yoga Flow của PT Lan Anh rất thư giãn. Không gian sạch sẽ, thoáng mát.', rating: 5, plan: 'Gói Pro' },
+  { name: 'Lê Minh Quân', text: 'Gói Elite xứng đáng từng đồng. PT không giới hạn, spa sau tập cực đã.', rating: 5, plan: 'Gói Elite' },
 ];
 
 export default function DemoGym() {
@@ -27,6 +43,7 @@ export default function DemoGym() {
   const [regForm, setRegForm] = useState({ name: '', phone: '', plan: '' });
   const [regDone, setRegDone] = useState(false);
   const [activeClass, setActiveClass] = useState<typeof classes[0] | null>(null);
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#0A0A0A] font-sans">
@@ -47,10 +64,25 @@ export default function DemoGym() {
               <button key={n} className="cursor-pointer hover:text-orange-400 transition-colors">{n}</button>
             ))}
           </nav>
-          <button onClick={() => setShowReg(true)} className="flex items-center gap-1.5 bg-orange-500 hover:bg-orange-400 text-white text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer whitespace-nowrap transition-colors">
-            <i className="ri-vip-crown-line"></i>Đăng Ký Thành Viên
-          </button>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setShowReg(true)} className="hidden md:flex items-center gap-1.5 bg-orange-500 hover:bg-orange-400 text-white text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer whitespace-nowrap transition-colors">
+              <i className="ri-vip-crown-line"></i>Đăng Ký Thành Viên
+            </button>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center text-white/60">
+              <i className="ri-menu-line text-xl"></i>
+            </button>
+          </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-white/10 px-4 py-3 space-y-2 bg-[#0A0A0A]">
+            {['Lịch Lớp', 'Gói Tập', 'HLV', 'Tiện Ích', 'Liên Hệ'].map(n => (
+              <button key={n} className="block w-full text-left text-sm text-white/60 py-1 cursor-pointer hover:text-orange-400">{n}</button>
+            ))}
+            <button onClick={() => setShowReg(true)} className="w-full bg-orange-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl cursor-pointer mt-2">
+              Đăng Ký Thành Viên
+            </button>
+          </div>
+        )}
       </header>
 
       {/* Hero */}
@@ -84,6 +116,21 @@ export default function DemoGym() {
               ))}
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Gallery */}
+      <div className="max-w-6xl mx-auto px-4 md:px-6 py-10">
+        <div className="text-center mb-6">
+          <span className="text-orange-500 text-xs font-bold tracking-widest">CƠ SỞ VẬT CHẤT</span>
+          <h2 className="text-2xl font-black text-white mt-2">Khám Phá Iron Core</h2>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {gallery.map((img, i) => (
+            <div key={i} className={`rounded-xl overflow-hidden ${i === 0 ? 'md:col-span-2' : ''}`}>
+              <img src={img} alt={`Gym ${i+1}`} className="w-full h-40 md:h-48 object-cover object-center hover:scale-105 transition-transform duration-500" />
+            </div>
+          ))}
         </div>
       </div>
 
@@ -152,7 +199,7 @@ export default function DemoGym() {
           <span className="text-orange-500 text-xs font-bold tracking-widest">HUẤN LUYỆN VIÊN</span>
           <h2 className="text-2xl md:text-3xl font-black text-white mt-2">Đội Ngũ Chuyên Gia Quốc Tế</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-5">
           {trainers.map(t => (
             <div key={t.name} className="bg-[#111111] rounded-2xl overflow-hidden border border-white/10 hover:border-orange-500/40 transition-all group">
               <div className="relative overflow-hidden h-52">
@@ -168,6 +215,28 @@ export default function DemoGym() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Testimonials */}
+      <div className="bg-[#111111] border-t border-white/5 py-10">
+        <div className="max-w-6xl mx-auto px-4 md:px-6">
+          <div className="text-center mb-6">
+            <span className="text-orange-500 text-xs font-bold tracking-widest">THÀNH VIÊN NÓI GÌ?</span>
+            <h2 className="text-2xl font-black text-white mt-2">Kết Quả Thật Từ Người Tập Thật</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {testimonials.map(t => (
+              <div key={t.name} className="bg-[#1A1A1A] rounded-2xl p-5 border border-white/10">
+                <div className="text-orange-400 text-sm mb-2">{'★'.repeat(t.rating)}</div>
+                <p className="text-white/60 text-sm leading-relaxed mb-3">"{t.text}"</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-white font-semibold text-sm">{t.name}</span>
+                  <span className="text-orange-400 text-xs">{t.plan}</span>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 

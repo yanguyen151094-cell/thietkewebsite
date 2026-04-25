@@ -1,31 +1,31 @@
 import { useState } from 'react';
 
 const rooms = [
-  { id: 1, name: 'Phòng Deluxe View Vườn', price: 850000, image: 'https://readdy.ai/api/search-image?query=cozy%20deluxe%20hotel%20room%20garden%20view%20warm%20wooden%20interior%20clean%20modern%20Vietnamese%20luxury%20accommodation%20bed%20linens&width=600&height=400&seq=ks001&orientation=landscape', guests: 2, size: '32m²', amenities: ['WiFi Cao Tốc', 'TV 55"', 'Điều Hòa', 'Minibar'], badge: 'PHỔ BIẾN' },
-  { id: 2, name: 'Phòng Superior View Hồ', price: 1150000, image: 'https://readdy.ai/api/search-image?query=superior%20hotel%20room%20lake%20view%20beautiful%20scenic%20panoramic%20window%20luxury%20Vietnamese%20resort%20accommodation%20modern%20elegant&width=600&height=400&seq=ks002&orientation=landscape', guests: 2, size: '40m²', amenities: ['WiFi Cao Tốc', 'TV 65"', 'Bồn Tắm', 'Ban Công'], badge: 'YÊU THÍCH' },
-  { id: 3, name: 'Suite Gia Đình', price: 1850000, image: 'https://readdy.ai/api/search-image?query=spacious%20family%20suite%20hotel%20room%20luxury%20Vietnamese%20resort%20modern%20elegant%20interior%20two%20beds%20living%20area%20warm&width=600&height=400&seq=ks003&orientation=landscape', guests: 4, size: '65m²', amenities: ['WiFi', '2 Phòng Ngủ', 'Bếp Nhỏ', 'Phòng Khách'], badge: 'RỘNG NHẤT' },
+  { id: 1, name: 'Phòng Deluxe View Vườn', price: 850000, image: 'https://readdy.ai/api/search-image?query=cozy%20deluxe%20hotel%20room%20garden%20view%20warm%20wooden%20interior%20clean%20modern%20Vietnamese%20luxury%20accommodation%20bed%20white%20linens%20natural%20light&width=600&height=400&seq=ks_room_01&orientation=landscape', guests: 2, size: '32m²', amenities: ['WiFi Cao Tốc', 'TV 55"', 'Điều Hòa', 'Minibar'], badge: 'PHỔ BIẾN' },
+  { id: 2, name: 'Phòng Superior View Hồ', price: 1150000, image: 'https://readdy.ai/api/search-image?query=superior%20hotel%20room%20lake%20view%20beautiful%20scenic%20panoramic%20window%20luxury%20Vietnamese%20resort%20accommodation%20modern%20elegant%20balcony&width=600&height=400&seq=ks_room_02&orientation=landscape', guests: 2, size: '40m²', amenities: ['WiFi Cao Tốc', 'TV 65"', 'Bồn Tắm', 'Ban Công'], badge: 'YÊU THÍCH' },
+  { id: 3, name: 'Suite Gia Đình', price: 1850000, image: 'https://readdy.ai/api/search-image?query=spacious%20family%20suite%20hotel%20room%20luxury%20Vietnamese%20resort%20modern%20elegant%20interior%20two%20beds%20living%20area%20warm%20cozy&width=600&height=400&seq=ks_room_03&orientation=landscape', guests: 4, size: '65m²', amenities: ['WiFi', '2 Phòng Ngủ', 'Bếp Nhỏ', 'Phòng Khách'], badge: 'RỘNG NHẤT' },
 ];
 
 const gallery = [
-  { img: 'https://readdy.ai/api/search-image?query=beautiful%20Vietnamese%20boutique%20hotel%20exterior%20lush%20garden%20pool%20sunrise%20view%20professional%20photography%20landscape&width=600&height=400&seq=ksgal1&orientation=landscape', label: 'Khuôn viên' },
-  { img: 'https://readdy.ai/api/search-image?query=cozy%20hotel%20breakfast%20buffet%20table%20morning%20light%20wooden%20rustic%20Vietnamese%20resort%20interior%20food%20photography&width=600&height=400&seq=ksgal2&orientation=landscape', label: 'Bữa sáng' },
-  { img: 'https://readdy.ai/api/search-image?query=outdoor%20swimming%20pool%20boutique%20resort%20Dalat%20Vietnam%20tropical%20garden%20sunset%20romantic%20atmosphere%20infinity%20pool&width=600&height=400&seq=ksgal3&orientation=landscape', label: 'Hồ bơi' },
-  { img: 'https://readdy.ai/api/search-image?query=luxury%20hotel%20room%20interior%20Vietnamese%20resort%20soft%20lighting%20elegant%20comfortable%20white%20bed%20decor%20premium&width=600&height=400&seq=ksgal4&orientation=landscape', label: 'Phòng nghỉ' },
-  { img: 'https://readdy.ai/api/search-image?query=hotel%20spa%20massage%20room%20Vietnam%20luxury%20beauty%20treatment%20wellness%20candles%20tranquil%20serene%20atmosphere&width=600&height=400&seq=ksgal5&orientation=landscape', label: 'Spa' },
-  { img: 'https://readdy.ai/api/search-image?query=restaurant%20dining%20area%20boutique%20hotel%20Vietnam%20elegant%20wooden%20interior%20warm%20lighting%20beautiful%20table%20setting%20fine&width=600&height=400&seq=ksgal6&orientation=landscape', label: 'Nhà hàng' },
-  { img: 'https://readdy.ai/api/search-image?query=hotel%20outdoor%20garden%20fire%20pit%20bonfire%20evening%20misty%20Dalat%20Vietnam%20romantic%20seating%20cozy%20atmosphere&width=600&height=400&seq=ksgal7&orientation=landscape', label: 'Lửa trại' },
-  { img: 'https://readdy.ai/api/search-image?query=hotel%20rooftop%20terrace%20panoramic%20view%20pine%20forest%20mountains%20Dalat%20Vietnam%20morning%20coffee%20sky&width=600&height=400&seq=ksgal8&orientation=landscape', label: 'Sân thượng' },
-  { img: 'https://readdy.ai/api/search-image?query=boutique%20hotel%20lobby%20reception%20elegant%20warm%20wooden%20interior%20Vietnam%20cozy%20modern%20minimal%20decor%20artsy&width=600&height=400&seq=ksgal9&orientation=landscape', label: 'Sảnh' },
-  { img: 'https://readdy.ai/api/search-image?query=hotel%20bathtub%20window%20view%20Dalat%20pine%20forest%20foggy%20mountains%20romantic%20luxury%20resort%20Vietnam%20soaking&width=600&height=400&seq=ksgal10&orientation=landscape', label: 'Bồn tắm view' },
-  { img: 'https://readdy.ai/api/search-image?query=hotel%20cozy%20bar%20lounge%20area%20warm%20lighting%20Dalat%20Vietnam%20drinks%20cocktails%20evening%20wood%20shelves&width=600&height=400&seq=ksgal11&orientation=landscape', label: 'Bar & Lounge' },
-  { img: 'https://readdy.ai/api/search-image?query=Vietnamese%20resort%20outdoor%20garden%20pathway%20stone%20lanterns%20flowers%20tropical%20plants%20evening%20romantic%20lighting&width=600&height=400&seq=ksgal12&orientation=landscape', label: 'Vườn đêm' },
+  { img: 'https://readdy.ai/api/search-image?query=beautiful%20Vietnamese%20boutique%20hotel%20exterior%20lush%20garden%20pool%20sunrise%20view%20professional%20photography%20landscape%20morning&width=600&height=400&seq=ks_gal_01&orientation=landscape', label: 'Khuôn viên' },
+  { img: 'https://readdy.ai/api/search-image?query=cozy%20hotel%20breakfast%20buffet%20table%20morning%20light%20wooden%20rustic%20Vietnamese%20resort%20interior%20food%20photography%20spread&width=600&height=400&seq=ks_gal_02&orientation=landscape', label: 'Bữa sáng' },
+  { img: 'https://readdy.ai/api/search-image?query=outdoor%20swimming%20pool%20boutique%20resort%20Dalat%20Vietnam%20tropical%20garden%20sunset%20romantic%20atmosphere%20infinity%20pool%20blue%20water&width=600&height=400&seq=ks_gal_03&orientation=landscape', label: 'Hồ bơi' },
+  { img: 'https://readdy.ai/api/search-image?query=luxury%20hotel%20room%20interior%20Vietnamese%20resort%20soft%20lighting%20elegant%20comfortable%20white%20bed%20decor%20premium%20pillows&width=600&height=400&seq=ks_gal_04&orientation=landscape', label: 'Phòng nghỉ' },
+  { img: 'https://readdy.ai/api/search-image?query=hotel%20spa%20massage%20room%20Vietnam%20luxury%20beauty%20treatment%20wellness%20candles%20tranquil%20serene%20atmosphere%20orchid&width=600&height=400&seq=ks_gal_05&orientation=landscape', label: 'Spa' },
+  { img: 'https://readdy.ai/api/search-image?query=restaurant%20dining%20area%20boutique%20hotel%20Vietnam%20elegant%20wooden%20interior%20warm%20lighting%20beautiful%20table%20setting%20fine%20dining&width=600&height=400&seq=ks_gal_06&orientation=landscape', label: 'Nhà hàng' },
+  { img: 'https://readdy.ai/api/search-image?query=hotel%20outdoor%20garden%20fire%20pit%20bonfire%20evening%20misty%20Dalat%20Vietnam%20romantic%20seating%20cozy%20atmosphere%20pine%20trees&width=600&height=400&seq=ks_gal_07&orientation=landscape', label: 'Lửa trại' },
+  { img: 'https://readdy.ai/api/search-image?query=hotel%20rooftop%20terrace%20panoramic%20view%20pine%20forest%20mountains%20Dalat%20Vietnam%20morning%20coffee%20sky%20clouds&width=600&height=400&seq=ks_gal_08&orientation=landscape', label: 'Sân thượng' },
+  { img: 'https://readdy.ai/api/search-image?query=boutique%20hotel%20lobby%20reception%20elegant%20warm%20wooden%20interior%20Vietnam%20cozy%20modern%20minimal%20decor%20artsy%20welcoming&width=600&height=400&seq=ks_gal_09&orientation=landscape', label: 'Sảnh' },
+  { img: 'https://readdy.ai/api/search-image?query=hotel%20bathtub%20window%20view%20Dalat%20pine%20forest%20foggy%20mountains%20romantic%20luxury%20resort%20Vietnam%20soaking%20tub&width=600&height=400&seq=ks_gal_10&orientation=landscape', label: 'Bồn tắm view' },
+  { img: 'https://readdy.ai/api/search-image?query=hotel%20cozy%20bar%20lounge%20area%20warm%20lighting%20Dalat%20Vietnam%20drinks%20cocktails%20evening%20wood%20shelves%20bottles&width=600&height=400&seq=ks_gal_11&orientation=landscape', label: 'Bar & Lounge' },
+  { img: 'https://readdy.ai/api/search-image?query=Vietnamese%20resort%20outdoor%20garden%20pathway%20stone%20lanterns%20flowers%20tropical%20plants%20evening%20romantic%20lighting%20walkway&width=600&height=400&seq=ks_gal_12&orientation=landscape', label: 'Vườn đêm' },
 ];
 
 const aroundDalat = [
-  { img: 'https://readdy.ai/api/search-image?query=Dalat%20flower%20garden%20valley%20colorful%20blooming%20flowers%20Vietnam%20tourist%20attraction%20beautiful%20landscape%20valley&width=600&height=400&seq=ksaround1&orientation=landscape', name: 'Vườn Hoa Đà Lạt', dist: '2.5 km', icon: 'ri-plant-line' },
-  { img: 'https://readdy.ai/api/search-image?query=Xuan%20Huong%20Lake%20Dalat%20Vietnam%20peaceful%20morning%20mist%20reflection%20beautiful%20scenic%20swan%20boats&width=600&height=400&seq=ksaround2&orientation=landscape', name: 'Hồ Xuân Hương', dist: '3 km', icon: 'ri-water-flash-line' },
-  { img: 'https://readdy.ai/api/search-image?query=cable%20car%20Robin%20Hill%20Dalat%20Vietnam%20panoramic%20aerial%20view%20pine%20forest%20mountain%20green%20lush&width=600&height=400&seq=ksaround3&orientation=landscape', name: 'Cáp Treo Robin', dist: '4 km', icon: 'ri-riding-line' },
-  { img: 'https://readdy.ai/api/search-image?query=Dalat%20night%20market%20Vietnam%20street%20food%20stalls%20lanterns%20evening%20colorful%20bustling%20vendors%20flowers&width=600&height=400&seq=ksaround4&orientation=landscape', name: 'Chợ Đêm Đà Lạt', dist: '3.5 km', icon: 'ri-store-2-line' },
+  { img: 'https://readdy.ai/api/search-image?query=Dalat%20flower%20garden%20valley%20colorful%20blooming%20flowers%20Vietnam%20tourist%20attraction%20beautiful%20landscape%20valley%20hills&width=600&height=400&seq=ks_around_01&orientation=landscape', name: 'Vườn Hoa Đà Lạt', dist: '2.5 km', icon: 'ri-plant-line' },
+  { img: 'https://readdy.ai/api/search-image?query=Xuan%20Huong%20Lake%20Dalat%20Vietnam%20peaceful%20morning%20mist%20reflection%20beautiful%20scenic%20swan%20boats%20mountains&width=600&height=400&seq=ks_around_02&orientation=landscape', name: 'Hồ Xuân Hương', dist: '3 km', icon: 'ri-water-flash-line' },
+  { img: 'https://readdy.ai/api/search-image?query=cable%20car%20Robin%20Hill%20Dalat%20Vietnam%20panoramic%20aerial%20view%20pine%20forest%20mountain%20green%20lush%20gondola&width=600&height=400&seq=ks_around_03&orientation=landscape', name: 'Cáp Treo Robin', dist: '4 km', icon: 'ri-riding-line' },
+  { img: 'https://readdy.ai/api/search-image?query=Dalat%20night%20market%20Vietnam%20street%20food%20stalls%20lanterns%20evening%20colorful%20bustling%20vendors%20flowers%20local&width=600&height=400&seq=ks_around_04&orientation=landscape', name: 'Chợ Đêm Đà Lạt', dist: '3.5 km', icon: 'ri-store-2-line' },
 ];
 
 const features = [
@@ -45,6 +45,7 @@ const faqs = [
 ];
 
 export default function DemoKhachSan() {
+  const [mobileMenu, setMobileMenu] = useState(false);
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [guests, setGuests] = useState('2');
@@ -67,10 +68,25 @@ export default function DemoKhachSan() {
               <button key={item} className="cursor-pointer hover:text-emerald-600 transition-colors">{item}</button>
             ))}
           </nav>
-          <a href="https://zalo.me/0901234567" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-full cursor-pointer whitespace-nowrap hover:bg-emerald-700 transition-colors">
-            <i className="ri-message-2-fill text-xs"></i>Đặt Phòng Zalo
-          </a>
+          <div className="flex items-center gap-2">
+            <a href="https://zalo.me/0901234567" target="_blank" rel="noopener noreferrer" className="hidden md:flex items-center gap-1.5 bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-full cursor-pointer whitespace-nowrap hover:bg-emerald-700 transition-colors">
+              <i className="ri-message-2-fill text-xs"></i>Đặt Phòng Zalo
+            </a>
+            <button onClick={() => setMobileMenu(!mobileMenu)} className="md:hidden w-9 h-9 flex items-center justify-center text-stone-600">
+              <i className="ri-menu-line text-xl"></i>
+            </button>
+          </div>
         </div>
+        {mobileMenu && (
+          <div className="md:hidden border-t border-stone-100 px-4 py-3 space-y-2 bg-white">
+            {['Phòng & Giá', 'Tiện Ích', 'Địa Điểm', 'Blog', 'Liên Hệ'].map((item) => (
+              <button key={item} className="block w-full text-left text-sm text-stone-600 py-1 cursor-pointer hover:text-emerald-600">{item}</button>
+            ))}
+            <a href="https://zalo.me/0901234567" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-full cursor-pointer mt-2 w-fit">
+              <i className="ri-message-2-fill text-xs"></i>Đặt Phòng Zalo
+            </a>
+          </div>
+        )}
       </header>
 
       {/* Hero */}
